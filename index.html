@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bell'Italia - Viajes Inolvidables</title>
+    <!-- Carga de Tailwind CSS para estilos rápidos y responsivos -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de fuentes personalizadas desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
     <style>
         body {
             font-family: 'Lora', serif;
-            background-color: #fdfaf6; /* A warm, paper-like off-white */
-            color: #3d405b; /* A softer, almost-black */
+            background-color: #fdfaf6; /* Un blanco roto cálido, similar al papel */
+            color: #3d405b; /* Un casi negro más suave */
         }
         h1, h2, h3, .nav-link {
             font-family: 'Playfair Display', serif;
@@ -39,7 +42,7 @@
             letter-spacing: 1px;
         }
         .btn-primary {
-            background-color: #006400;
+            background-color: #006400; /* Verde oscuro */
             color: white;
         }
         .btn-primary:hover {
@@ -48,22 +51,13 @@
             border-color: #006400;
         }
          .btn-secondary {
-            background-color: #c8102e;
+            background-color: #c8102e; /* Rojo italiano */
             color: white;
         }
         .btn-secondary:hover {
             background-color: white;
             color: #c8102e;
             border-color: #c8102e;
-        }
-        .btn-download {
-            background-color: #1d4ed8; 
-            color: white;
-        }
-        .btn-download:hover {
-             background-color: white;
-             color: #1d4ed8;
-             border-color: #1d4ed8;
         }
         .text-shadow-lg {
             text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
@@ -97,10 +91,26 @@
         input:focus, textarea:focus {
              box-shadow: 0 0 0 2px rgba(0, 100, 0, 0.3);
         }
+        #form-status {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        .status-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .status-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Encabezado y Navegación -->
     <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-4xl font-bold text-green-700 nav-link logo">Bell'Italia</a>
@@ -115,6 +125,7 @@
                 </button>
             </div>
         </nav>
+        <!-- Menú para móviles -->
         <div id="mobile-menu" class="hidden md:hidden">
             <a href="#paquetes" class="block py-3 px-4 text-sm hover:bg-gray-200 nav-link">Salidas Grupales</a>
             <a href="#personalizados" class="block py-3 px-4 text-sm hover:bg-gray-200 nav-link">Viajes a Medida</a>
@@ -122,13 +133,16 @@
         </div>
     </header>
 
+    <!-- Sección Principal (Hero) -->
     <section class="hero-section text-white min-h-[60vh] flex flex-col justify-center items-center">
         <h1 class="text-5xl md:text-7xl font-bold text-center mb-4 text-shadow-lg">Descubre Italia</h1>
         <p class="text-xl md:text-2xl text-center">Un viaje por el corazón del arte, la historia y el sabor.</p>
     </section>
 
+    <!-- Contenido Principal -->
     <main class="container mx-auto px-4 sm:px-6 py-16">
 
+        <!-- Sección: Salidas Grupales -->
         <section id="paquetes" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
             <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Únete a nuestras aventuras cuidadosamente diseñadas y vive una experiencia inolvidable en la mejor compañía.</p>
@@ -165,6 +179,7 @@
             </div>
         </section>
 
+        <!-- Sección: Viajes a Medida -->
         <section id="personalizados" class="my-16 section-bg p-8 md:p-12 rounded-lg">
             <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Viajes a Medida</h2>
             <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Diseñamos la aventura de tus sueños. Tú eliges el destino, nosotros nos encargamos de la magia. Aquí un ejemplo de lo que podemos crear.</p>
@@ -175,9 +190,11 @@
                         Marta y José querían un viaje que combinara la historia clásica con el encanto del norte. Creamos para ellos una ruta única que les permitió vivir lo mejor de ambos mundos, con la comodidad de los trenes de alta velocidad y estancias en hoteles con encanto. Haz clic en cada destino para ver sus maravillas.
                     </p>
                     <div id="destinations-container" class="flex flex-wrap justify-center items-start gap-4 md:gap-6 mb-8">
-                        </div>
+                        <!-- Los círculos de destinos se insertan aquí con JavaScript -->
+                    </div>
                     <div id="city-info-card" class="hidden opacity-0 transform -translate-y-4 max-w-3xl mx-auto">
-                        </div>
+                        <!-- La información de la ciudad se inserta aquí con JavaScript -->
+                    </div>
                      <div class="text-center mt-10">
                         <a id="consultar-personalizado-btn" href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
                      </div>
@@ -185,19 +202,22 @@
             </div>
         </section>
 
+        <!-- Sección: Contacto -->
         <section id="contacto" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Contacta con Nosotros</h2>
              <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl">
                  <p class="text-center text-gray-600 mb-6">¿Listo para tu aventura italiana? Envíanos tu consulta y nos pondremos en contacto a la brevedad.</p>
                  
+                 <!-- Contenedor del itinerario actualizado -->
                  <div id="download-container" class="text-center mb-8 hidden">
-                     <a href="itinerario-sur.italia.pdf" download="Itinerario-Sur-Italia.pdf" class="inline-flex items-center justify-center w-full px-8 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Descargar Itinerario "Sur de Italia"
-                    </a>
+                     <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4" role="alert">
+                       <p class="font-bold">Itinerario Detallado</p>
+                       <p>El itinerario completo para "El Alma del Sur de Italia" se enviará a tu correo electrónico una vez que completes la consulta.</p>
+                     </div>
                  </div>
                  
-                 <form action="mailto:fliarneodoger@gmail.com,Aguarneodo@gmail.com" method="post" enctype="text/plain">
+                 <!-- Formulario de Contacto -->
+                 <form id="contact-form">
                      <div class="mb-4">
                          <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
                          <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required>
@@ -214,19 +234,133 @@
                          <button type="submit" class="w-full btn btn-primary">Enviar Consulta</button>
                      </div>
                  </form>
+                 <!-- Mensaje de estado del formulario -->
+                 <div id="form-status" class="hidden"></div>
              </div>
         </section>
 
     </main>
 
+    <!-- Pie de Página -->
     <footer class="bg-gray-800 text-white mt-16">
         <div class="container mx-auto px-6 py-8 text-center">
             <p>&copy; 2025 Bell'Italia. Un viaje inolvidable te espera.</p>
         </div>
     </footer>
 
+    <!-- Scripts de Firebase -->
+    <script type="module">
+        // Importa las funciones que necesitas de los SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        // --- Configuración e Inicialización de Firebase ---
+        let firebaseConfig;
+        let app;
+        let db;
+        let auth;
+        
+        const formStatus = document.getElementById('form-status');
+
+        try {
+            // Intenta importar la configuración desde un archivo local (para desarrollo local/GitHub)
+            const configModule = await import('./firebase-config.js');
+            firebaseConfig = configModule.firebaseConfig;
+            console.log("Configuración de Firebase cargada desde archivo local.");
+        } catch (e) {
+            // Si falla, intenta usar la configuración inyectada (para el entorno de Canvas)
+            if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+                firebaseConfig = JSON.parse(__firebase_config);
+                console.log("Configuración de Firebase cargada desde el entorno de Canvas.");
+            } else {
+                firebaseConfig = null;
+                console.error("No se pudo cargar la configuración de Firebase desde ninguna fuente.");
+            }
+        }
+        
+        // Solo inicializar si la configuración de Firebase está presente
+        if (firebaseConfig && firebaseConfig.apiKey) {
+            try {
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                // Autenticar usuario (usando token de Canvas si está disponible)
+                const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                    console.log("Autenticado con token personalizado.");
+                } else {
+                    await signInAnonymously(auth);
+                    console.log("Autenticado anónimamente.");
+                }
+            } catch (error) {
+                console.error("Error al inicializar Firebase:", error);
+                db = null; // Asegura que la DB no se use si hay error
+                formStatus.textContent = 'Error de conexión. El formulario está deshabilitado.';
+                formStatus.className = 'status-error';
+                formStatus.classList.remove('hidden');
+            }
+        } else {
+            formStatus.textContent = 'Error de configuración. El formulario está deshabilitado.';
+            formStatus.className = 'status-error';
+            formStatus.classList.remove('hidden');
+        }
+
+        // Lógica del formulario de contacto
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!db) {
+                formStatus.textContent = 'Error: No se puede conectar a la base de datos.';
+                formStatus.className = 'status-error';
+                formStatus.classList.remove('hidden');
+                return;
+            }
+
+            const name = contactForm.name.value;
+            const email = contactForm.email.value;
+            const message = contactForm.message.value;
+
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+
+            try {
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                const collectionPath = `artifacts/${appId}/public/data/consultas`;
+                
+                const docRef = await addDoc(collection(db, collectionPath), {
+                    name: name,
+                    email: email,
+                    message: message,
+                    timestamp: new Date()
+                });
+                console.log("Documento escrito con ID: ", docRef.id);
+                
+                formStatus.textContent = '¡Gracias por tu consulta! Nos pondremos en contacto pronto.';
+                formStatus.className = 'status-success';
+                formStatus.classList.remove('hidden');
+                contactForm.reset();
+
+            } catch (error) {
+                console.error("Error al añadir el documento: ", error);
+                formStatus.textContent = 'Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.';
+                formStatus.className = 'status-error';
+                formStatus.classList.remove('hidden');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Enviar Consulta';
+            }
+        });
+    </script>
+
+    <!-- Bloque de JavaScript para la lógica de la página -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Datos de las ciudades para la sección de viajes a medida
             const cityData = {
                 roma: {
                     title: "Roma, la Ciudad Eterna",
@@ -270,7 +404,7 @@
                 }
             };
             
-            // --- Elements Initialization ---
+            // --- Inicialización de Elementos ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const destinationsContainer = document.getElementById('destinations-container');
@@ -278,14 +412,7 @@
             const downloadContainer = document.getElementById('download-container');
             const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
             const consultarPersonalizadoBtn = document.getElementById('consultar-personalizado-btn');
-            const introOverlay = document.getElementById('intro-overlay');
-            const startGameBtn = document.getElementById('start-game-btn');
-            const grupalImage = document.getElementById('grupal-image');
-            if (grupalImage) {
-                grupalImage.src = 'https://images.unsplash.com/photo-1617906915399-63319082f42a?q=80&w=800&auto=format&fit=crop';
-            }
-            let introTimer;
-
+            
             // --- Event Listeners ---
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
@@ -348,37 +475,12 @@
                 downloadContainer.classList.remove('hidden');
                 document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
             });
+
             consultarPersonalizadoBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 downloadContainer.classList.add('hidden');
                  document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
             });
-
-             const skipIntroWait = () => {
-                clearTimeout(introTimer);
-                if (startGameBtn) {
-                   startGameBtn.style.opacity = 1;
-                }
-                if (introOverlay) {
-                    introOverlay.removeEventListener('click', skipIntroWait);
-                }
-            };
-
-            introTimer = setTimeout(skipIntroWait, 5000); 
-            if(introOverlay) {
-                introOverlay.addEventListener('click', skipIntroWait, { once: true });
-            }
-            if(startGameBtn){
-                 startGameBtn.addEventListener('click', (e) => {
-                    e.stopPropagation(); 
-                    if(introOverlay){
-                        introOverlay.style.opacity = 0;
-                        setTimeout(() => {
-                            introOverlay.style.display = 'none';
-                        }, 1500);
-                    }
-                });
-            }
         });
     </script>
 
