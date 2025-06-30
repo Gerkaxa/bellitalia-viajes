@@ -146,7 +146,7 @@
         <section id="paquetes" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
             <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Únete a nuestras aventuras cuidadosamente diseñadas y vive una experiencia inolvidable en la mejor compañía.</p>
-            
+
             <div class="bg-white rounded-lg shadow-2xl overflow-hidden md:flex">
                 <div class="md:w-2/5">
                     <img id="grupal-image" src="https://images.unsplash.com/photo-1617906915399-63319082f42a?q=80&w=800&auto=format&fit=crop" alt="Costa de Polignano a Mare" class="w-full h-full object-cover">
@@ -172,8 +172,11 @@
                         <p><strong>Día 13:</strong> Pompeya y traslado a Roma.</p>
                         <p><strong>Día 14-15:</strong> Días en Roma y traslado al aeropuerto.</p>
                     </div>
-                    <div class="mt-auto">
-                         <a id="consultar-grupal-btn" href="#contacto" class="inline-block mt-6 px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
+                    <div class="mt-auto pt-6 flex flex-wrap gap-4">
+                        <!-- CAMBIO: Este botón ahora descarga el PDF directamente -->
+                        <a href="itinerario-Sur-italia.pdf" download="Itinerario-Completo-Sur-de-Italia.pdf" class="inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Descargar Itinerario</a>
+                        <!-- NUEVO: Botón para ir directamente al formulario de contacto -->
+                        <a href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Consultar Ahora</a>
                     </div>
                 </div>
             </div>
@@ -196,7 +199,7 @@
                         <!-- La información de la ciudad se inserta aquí con JavaScript -->
                     </div>
                      <div class="text-center mt-10">
-                        <a id="consultar-personalizado-btn" href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
+                        <a href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
                      </div>
                 </div>
             </div>
@@ -208,14 +211,8 @@
              <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl">
                  <p class="text-center text-gray-600 mb-6">¿Listo para tu aventura italiana? Envíanos tu consulta y nos pondremos en contacto a la brevedad.</p>
                  
-                 <!-- Contenedor del itinerario actualizado -->
-                 <div id="download-container" class="text-center mb-8 hidden">
-                     <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4" role="alert">
-                       <p class="font-bold">Itinerario Detallado</p>
-                       <p>El itinerario completo para "El Alma del Sur de Italia" se enviará a tu correo electrónico una vez que completes la consulta.</p>
-                     </div>
-                 </div>
-                 
+                 <!-- ELIMINADO: El contenedor de descarga de PDF ya no es necesario aquí -->
+
                  <!-- Formulario de Contacto -->
                  <form id="contact-form">
                      <div class="mb-4">
@@ -248,56 +245,41 @@
         </div>
     </footer>
 
-    <!-- Scripts de Firebase -->
+    <!-- Scripts de Firebase (sin cambios) -->
     <script type="module">
-        // Importa las funciones que necesitas de los SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        // --- Configuración e Inicialización de Firebase ---
         let firebaseConfig;
         let app;
         let db;
         let auth;
-        
         const formStatus = document.getElementById('form-status');
-
         try {
-            // Intenta importar la configuración desde un archivo local (para desarrollo local/GitHub)
             const configModule = await import('./firebase-config.js');
             firebaseConfig = configModule.firebaseConfig;
-            console.log("Configuración de Firebase cargada desde archivo local.");
         } catch (e) {
-            // Si falla, intenta usar la configuración inyectada (para el entorno de Canvas)
             if (typeof __firebase_config !== 'undefined' && __firebase_config) {
                 firebaseConfig = JSON.parse(__firebase_config);
-                console.log("Configuración de Firebase cargada desde el entorno de Canvas.");
             } else {
                 firebaseConfig = null;
-                console.error("No se pudo cargar la configuración de Firebase desde ninguna fuente.");
             }
         }
-        
-        // Solo inicializar si la configuración de Firebase está presente
         if (firebaseConfig && firebaseConfig.apiKey) {
             try {
                 app = initializeApp(firebaseConfig);
                 db = getFirestore(app);
                 auth = getAuth(app);
-
-                // Autenticar usuario (usando token de Canvas si está disponible)
                 const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
                 if (initialAuthToken) {
                     await signInWithCustomToken(auth, initialAuthToken);
-                    console.log("Autenticado con token personalizado.");
                 } else {
                     await signInAnonymously(auth);
-                    console.log("Autenticado anónimamente.");
                 }
             } catch (error) {
                 console.error("Error al inicializar Firebase:", error);
-                db = null; // Asegura que la DB no se use si hay error
+                db = null;
                 formStatus.textContent = 'Error de conexión. El formulario está deshabilitado.';
                 formStatus.className = 'status-error';
                 formStatus.classList.remove('hidden');
@@ -307,44 +289,34 @@
             formStatus.className = 'status-error';
             formStatus.classList.remove('hidden');
         }
-
-        // Lógica del formulario de contacto
         const contactForm = document.getElementById('contact-form');
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-
             if (!db) {
                 formStatus.textContent = 'Error: No se puede conectar a la base de datos.';
                 formStatus.className = 'status-error';
                 formStatus.classList.remove('hidden');
                 return;
             }
-
             const name = contactForm.name.value;
             const email = contactForm.email.value;
             const message = contactForm.message.value;
-
             const submitButton = contactForm.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.textContent = 'Enviando...';
-
             try {
                 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
                 const collectionPath = `artifacts/${appId}/public/data/consultas`;
-                
                 const docRef = await addDoc(collection(db, collectionPath), {
                     name: name,
                     email: email,
                     message: message,
                     timestamp: new Date()
                 });
-                console.log("Documento escrito con ID: ", docRef.id);
-                
                 formStatus.textContent = '¡Gracias por tu consulta! Nos pondremos en contacto pronto.';
                 formStatus.className = 'status-success';
                 formStatus.classList.remove('hidden');
                 contactForm.reset();
-
             } catch (error) {
                 console.error("Error al añadir el documento: ", error);
                 formStatus.textContent = 'Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.';
@@ -362,62 +334,27 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Datos de las ciudades para la sección de viajes a medida
             const cityData = {
-                roma: {
-                    title: "Roma, la Ciudad Eterna",
-                    image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=800&auto=format&fit=crop",
-                    description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana."
-                },
-                venosa: {
-                    title: "Venosa, Cuna de Horacio",
-                    image: "https://images.unsplash.com/photo-1623394023742-2762b7470636?q=80&w=800&auto=format&fit=crop",
-                    description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero."
-                },
-                sorrento: {
-                    title: "Sorrento y la Costa Amalfitana",
-                    image: "https://images.unsplash.com/photo-1563275436-2cf72635294a?q=80&w=800&auto=format&fit=crop",
-                    description: "<strong>Encantos:</strong> La puerta de entrada a la Costa Amalfitana. Disfruta de sus vistas al Vesubio y el Golfo de Nápoles. Desde aquí, explora Positano, Amalfi y la isla de Capri.<br><strong>Sabores:</strong> El aroma de los limones es el protagonista. Prueba el limoncello, la delizia al limone y los gnocchi alla sorrentina."
-                },
-                florencia: {
-                    title: "Florencia, Cuna del Arte",
-                    image: "https://images.unsplash.com/photo-1505923989938-160c878fab4e?q=80&w=800&auto=format&fit=crop",
-                    description: "<strong>Encantos:</strong> Sumérgete en el Renacimiento en la Galería Uffizi y la Galería de la Academia. Maravíllate con el Duomo de Brunelleschi y cruza el icónico Ponte Vecchio.<br><strong>Sabores:</strong> No te puedes perder una Bistecca alla Fiorentina, la sopa ribollita o un panino al lampredotto para los más aventureros."
-                },
-                milan: {
-                    title: "Milán, Capital de la Moda",
-                    image: "https://images.unsplash.com/photo-1510252123982-f5e94b2a8e8f?q=80&w=800&auto=format&fit=crop",
-                    description: "<strong>Encantos:</strong> Visita el majestuoso Duomo gótico, la lujosa Galería Vittorio Emanuele II y el Teatro alla Scala. Descubre el arte contemporáneo en el barrio de Brera.<br><strong>Sabores:</strong> El risotto alla milanese con azafrán y la cotoletta alla milanese son platos obligatorios. Disfruta de un aperitivo al atardecer."
-                },
-                capri: {
-                    title: "Capri, la Isla del Glamour",
-                    image: "https://images.unsplash.com/photo-1534445836885-3b02c4b82163?q=80&w=800&auto=format&fit=crop",
-                    description: "<strong>Encantos:</strong> Navega por los Faraglioni, visita la Gruta Azul y pasea por sus exclusivas boutiques. Sube en funicular a la Piazzetta para disfrutar de vistas espectaculares.<br><strong>Sabores:</strong> Prueba la ensalada caprese con los tomates más frescos y la mozzarella de búfala, y de postre, la Torta Caprese de chocolate y almendras."
-                },
-                pisa: {
-                    title: "Pisa y su Torre Inclinada",
-                    image: "https://images.unsplash.com/photo-1559642846-2f198124c653?q=80&w=800&auto=format&fit=crop",
-                    description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno."
-                },
-                lago_di_como: {
-                    title: "Lago di Como, Lujo y Naturaleza",
-                    image: "https://images.unsplash.com/photo-1549448834-3a6839a9a0f4?q=80&w=800&auto=format&fit=crop",
-                    description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas."
-                }
+                roma: { title: "Roma, la Ciudad Eterna", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana." },
+                venosa: { title: "Venosa, Cuna de Horacio", image: "https://images.unsplash.com/photo-1623394023742-2762b7470636?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero." },
+                sorrento: { title: "Sorrento y la Costa Amalfitana", image: "https://images.unsplash.com/photo-1563275436-2cf72635294a?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> La puerta de entrada a la Costa Amalfitana. Disfruta de sus vistas al Vesubio y el Golfo de Nápoles. Desde aquí, explora Positano, Amalfi y la isla de Capri.<br><strong>Sabores:</strong> El aroma de los limones es el protagonista. Prueba el limoncello, la delizia al limone y los gnocchi alla sorrentina." },
+                florencia: { title: "Florencia, Cuna del Arte", image: "https://images.unsplash.com/photo-1505923989938-160c878fab4e?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Sumérgete en el Renacimiento en la Galería Uffizi y la Galería de la Academia. Maravíllate con el Duomo de Brunelleschi y cruza el icónico Ponte Vecchio.<br><strong>Sabores:</strong> No te puedes perder una Bistecca alla Fiorentina, la sopa ribollita o un panino al lampredotto para los más aventureros." },
+                milan: { title: "Milán, Capital de la Moda", image: "https://images.unsplash.com/photo-1510252123982-f5e94b2a8e8f?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Visita el majestuoso Duomo gótico, la lujosa Galería Vittorio Emanuele II y el Teatro alla Scala. Descubre el arte contemporáneo en el barrio de Brera.<br><strong>Sabores:</strong> El risotto alla milanese con azafrán y la cotoletta alla milanese son platos obligatorios. Disfruta de un aperitivo al atardecer." },
+                capri: { title: "Capri, la Isla del Glamour", image: "https://images.unsplash.com/photo-1534445836885-3b02c4b82163?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Navega por los Faraglioni, visita la Gruta Azul y pasea por sus exclusivas boutiques. Sube en funicular a la Piazzetta para disfrutar de vistas espectaculares.<br><strong>Sabores:</strong> Prueba la ensalada caprese con los tomates más frescos y la mozzarella de búfala, y de postre, la Torta Caprese de chocolate y almendras." },
+                pisa: { title: "Pisa y su Torre Inclinada", image: "https://images.unsplash.com/photo-1559642846-2f198124c653?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno." },
+                lago_di_como: { title: "Lago di Como, Lujo y Naturaleza", image: "https://images.unsplash.com/photo-1549448834-3a6839a9a0f4?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas." }
             };
-            
+
             // --- Inicialización de Elementos ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const destinationsContainer = document.getElementById('destinations-container');
             const cityInfoCard = document.getElementById('city-info-card');
-            const downloadContainer = document.getElementById('download-container');
-            const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
-            const consultarPersonalizadoBtn = document.getElementById('consultar-personalizado-btn');
             
             // --- Event Listeners ---
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
             });
-            
+
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
@@ -426,13 +363,13 @@
                 });
             });
 
-            const cityKeys = ['roma', 'venosa', 'sorrento', 'florencia', 'milan', 'capri', 'pisa', 'lago_di_como'];
+            const cityKeys = Object.keys(cityData);
 
             cityKeys.forEach(key => {
                 const city = cityData[key];
                 const circleContainer = document.createElement('div');
                 circleContainer.className = 'text-center';
-                
+
                 const circle = document.createElement('div');
                 circle.className = 'destination-circle mx-auto';
                 circle.style.backgroundImage = `url('${city.image}')`;
@@ -461,7 +398,7 @@
                         </div>
                     `;
                     cityInfoCard.classList.remove('hidden', 'opacity-0', '-translate-y-4');
-                    
+
                     document.getElementById('close-card-btn').addEventListener('click', () => {
                         cityInfoCard.classList.add('opacity-0', '-translate-y-4');
                         setTimeout(() => cityInfoCard.classList.add('hidden'), 500);
@@ -470,17 +407,8 @@
                 });
             });
             
-            consultarGrupalBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                downloadContainer.classList.remove('hidden');
-                document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
-            });
-
-            consultarPersonalizadoBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                downloadContainer.classList.add('hidden');
-                 document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
-            });
+            // ELIMINADO: Los listeners para los botones de consulta ya no son necesarios
+            // porque los botones ahora son enlaces directos <a> o descargan archivos.
         });
     </script>
 
