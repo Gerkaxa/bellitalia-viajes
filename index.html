@@ -101,7 +101,6 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
     <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-4xl font-bold text-green-700 nav-link logo">Bell'Italia</a>
@@ -123,23 +122,20 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-section text-white min-h-[60vh] flex flex-col justify-center items-center">
         <h1 class="text-5xl md:text-7xl font-bold text-center mb-4 text-shadow-lg">Descubre Italia</h1>
         <p class="text-xl md:text-2xl text-center">Un viaje por el corazón del arte, la historia y el sabor.</p>
     </section>
 
-    <!-- Main Content -->
     <main class="container mx-auto px-4 sm:px-6 py-16">
 
-        <!-- Salidas Grupales Section -->
         <section id="paquetes" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
             <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Únete a nuestras aventuras cuidadosamente diseñadas y vive una experiencia inolvidable en la mejor compañía.</p>
             
             <div class="bg-white rounded-lg shadow-2xl overflow-hidden md:flex">
                 <div class="md:w-2/5">
-                    <img id="grupal-image" alt="Costa de Polignano a Mare" class="w-full h-full object-cover">
+                    <img id="grupal-image" src="https://images.unsplash.com/photo-1617906915399-63319082f42a?q=80&w=800&auto=format&fit=crop" alt="Costa de Polignano a Mare" class="w-full h-full object-cover">
                 </div>
                 <div class="md:w-3/5 p-6 md:p-8 flex flex-col">
                     <h3 class="text-3xl font-bold mb-2 text-red-700">El Alma del Sur de Italia</h3>
@@ -169,7 +165,6 @@
             </div>
         </section>
 
-        <!-- Viajes a Medida Section -->
         <section id="personalizados" class="my-16 section-bg p-8 md:p-12 rounded-lg">
             <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Viajes a Medida</h2>
             <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Diseñamos la aventura de tus sueños. Tú eliges el destino, nosotros nos encargamos de la magia. Aquí un ejemplo de lo que podemos crear.</p>
@@ -180,11 +175,9 @@
                         Marta y José querían un viaje que combinara la historia clásica con el encanto del norte. Creamos para ellos una ruta única que les permitió vivir lo mejor de ambos mundos, con la comodidad de los trenes de alta velocidad y estancias en hoteles con encanto. Haz clic en cada destino para ver sus maravillas.
                     </p>
                     <div id="destinations-container" class="flex flex-wrap justify-center items-start gap-4 md:gap-6 mb-8">
-                        <!-- Destination circles will be injected by JS -->
-                    </div>
+                        </div>
                     <div id="city-info-card" class="hidden opacity-0 transform -translate-y-4 max-w-3xl mx-auto">
-                        <!-- City info will be injected by JS -->
-                    </div>
+                        </div>
                      <div class="text-center mt-10">
                         <a id="consultar-personalizado-btn" href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
                      </div>
@@ -192,14 +185,13 @@
             </div>
         </section>
 
-        <!-- Contacto Section -->
         <section id="contacto" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Contacta con Nosotros</h2>
              <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl">
                  <p class="text-center text-gray-600 mb-6">¿Listo para tu aventura italiana? Envíanos tu consulta y nos pondremos en contacto a la brevedad.</p>
                  
                  <div id="download-container" class="text-center mb-8 hidden">
-                     <a href="Itinerario-sur.italia.pdf" download="Itinerario-Sur-Italia.pdf" class="inline-flex items-center justify-center w-full px-8 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
+                     <a href="itinerario-sur.italia.pdf" download="Itinerario-Sur-Italia.pdf" class="inline-flex items-center justify-center w-full px-8 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         Descargar Itinerario "Sur de Italia"
                     </a>
@@ -227,7 +219,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white mt-16">
         <div class="container mx-auto px-6 py-8 text-center">
             <p>&copy; 2025 Bell'Italia. Un viaje inolvidable te espera.</p>
@@ -290,6 +281,9 @@
             const introOverlay = document.getElementById('intro-overlay');
             const startGameBtn = document.getElementById('start-game-btn');
             const grupalImage = document.getElementById('grupal-image');
+            if (grupalImage) {
+                grupalImage.src = 'https://images.unsplash.com/photo-1617906915399-63319082f42a?q=80&w=800&auto=format&fit=crop';
+            }
             let introTimer;
 
             // --- Event Listeners ---
