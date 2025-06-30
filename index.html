@@ -91,9 +91,6 @@
         html {
             scroll-behavior: smooth;
         }
-        .nav-link:hover {
-            color: #006400;
-        }
         header {
             border-bottom: 1px solid #e5e7eb;
         }
@@ -150,7 +147,7 @@
                     <p class="text-gray-600 mb-6 leading-relaxed flex-grow">
                         Sumérgete en el alma vibrante del "Sur de Italia", donde cada rincón te espera con un encanto único. Con la coordinación de quienes vivieron sus calles y la guía de expertos locales, descubrirás una experiencia auténtica.
                     </p>
-                    <div class="space-y-2 text-gray-700 max-h-60 overflow-y-auto pr-2">
+                     <div class="space-y-2 text-gray-700 max-h-60 overflow-y-auto pr-2">
                         <p><strong>Día 1:</strong> Llegada y noche en Bari.</p>
                         <p><strong>Día 2:</strong> Polignano a Mare, Monopoli y noche en Lecce.</p>
                         <p><strong>Día 3:</strong> Lecce, Gallipoli y noche en Lecce.</p>
@@ -202,7 +199,7 @@
                  <p class="text-center text-gray-600 mb-6">¿Listo para tu aventura italiana? Envíanos tu consulta y nos pondremos en contacto a la brevedad.</p>
                  
                  <div id="download-container" class="text-center mb-8 hidden">
-                     <a href="Sumérgete en el alma vibrante del “Sur de Italia”, donde cada rincón te espera con un encanto único. Con la coordinacion experimentada de quienes vivieron sus calles por años y la guia experta de  (1) (1).pdf" download="Itinerario-Sur-de-Italia.pdf" class="inline-flex items-center justify-center w-full px-8 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
+                     <a href="Itinerario-sur.italia.pdf" download="Itinerario-Sur-Italia.pdf" class="inline-flex items-center justify-center w-full px-8 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         Descargar Itinerario "Sur de Italia"
                     </a>
@@ -292,6 +289,7 @@
             const consultarPersonalizadoBtn = document.getElementById('consultar-personalizado-btn');
             const introOverlay = document.getElementById('intro-overlay');
             const startGameBtn = document.getElementById('start-game-btn');
+            const grupalImage = document.getElementById('grupal-image');
             let introTimer;
 
             // --- Event Listeners ---
