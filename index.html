@@ -172,11 +172,9 @@
                         <p><strong>Día 13:</strong> Pompeya y traslado a Roma.</p>
                         <p><strong>Día 14-15:</strong> Días en Roma y traslado al aeropuerto.</p>
                     </div>
-                    <div class="mt-auto pt-6 flex flex-wrap gap-4">
-                        <!-- CAMBIO: Este botón ahora descarga el PDF directamente -->
-                        <a href="itinerario-Sur-italia.pdf" download="Itinerario-Completo-Sur-de-Italia.pdf" class="inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Descargar Itinerario</a>
-                        <!-- NUEVO: Botón para ir directamente al formulario de contacto -->
-                        <a href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Consultar Ahora</a>
+                    <div class="mt-auto pt-6">
+                        <!-- CAMBIO: Este botón ahora activa la sección de descarga más abajo -->
+                        <a id="consultar-grupal-btn" href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
                     </div>
                 </div>
             </div>
@@ -199,7 +197,8 @@
                         <!-- La información de la ciudad se inserta aquí con JavaScript -->
                     </div>
                      <div class="text-center mt-10">
-                        <a href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
+                        <!-- CAMBIO: Este botón oculta la sección de descarga -->
+                        <a id="consultar-personalizado-btn" href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
                      </div>
                 </div>
             </div>
@@ -211,7 +210,17 @@
              <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl">
                  <p class="text-center text-gray-600 mb-6">¿Listo para tu aventura italiana? Envíanos tu consulta y nos pondremos en contacto a la brevedad.</p>
                  
-                 <!-- ELIMINADO: El contenedor de descarga de PDF ya no es necesario aquí -->
+                 <!-- CAMBIO: Contenedor del itinerario, oculto por defecto -->
+                 <div id="download-container" class="text-center mb-8 hidden">
+                     <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                        <p class="font-bold text-lg mb-2 text-green-800">¡Gracias por tu interés en nuestro viaje grupal!</p>
+                        <p class="text-gray-700 mb-4">Puedes descargar el itinerario detallado aquí mismo.</p>
+                        <a href="itinerario-Sur-italia.pdf" download="Itinerario-Completo-Sur-de-Italia.pdf" class="inline-flex items-center justify-center w-full md:w-auto px-8 py-3 rounded-lg font-bold btn btn-primary transition-transform transform hover:scale-105">
+                           <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                           Descargar Itinerario "Sur de Italia"
+                       </a>
+                    </div>
+                 </div>
 
                  <!-- Formulario de Contacto -->
                  <form id="contact-form">
@@ -350,6 +359,11 @@
             const destinationsContainer = document.getElementById('destinations-container');
             const cityInfoCard = document.getElementById('city-info-card');
             
+            // CAMBIO: Elementos para controlar la descarga
+            const downloadContainer = document.getElementById('download-container');
+            const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
+            const consultarPersonalizadoBtn = document.getElementById('consultar-personalizado-btn');
+
             // --- Event Listeners ---
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
@@ -407,8 +421,26 @@
                 });
             });
             
-            // ELIMINADO: Los listeners para los botones de consulta ya no son necesarios
-            // porque los botones ahora son enlaces directos <a> o descargan archivos.
+            // CAMBIO: Lógica para mostrar/ocultar la descarga del itinerario
+            if (consultarGrupalBtn) {
+                consultarGrupalBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Previene el salto de página inmediato
+                    if (downloadContainer) {
+                        downloadContainer.classList.remove('hidden'); // Muestra la sección de descarga
+                    }
+                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' }); // Desplaza suavemente a la sección de contacto
+                });
+            }
+
+            if (consultarPersonalizadoBtn) {
+                consultarPersonalizadoBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Previene el salto de página inmediato
+                    if (downloadContainer) {
+                        downloadContainer.classList.add('hidden'); // Oculta la sección de descarga
+                    }
+                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' }); // Desplaza suavemente a la sección de contacto
+                });
+            }
         });
     </script>
 
