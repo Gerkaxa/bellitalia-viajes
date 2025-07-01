@@ -59,6 +59,15 @@
             color: #c8102e;
             border-color: #c8102e;
         }
+        .btn-download {
+            background-color: #1d4ed8; /* Azul */
+            color: white;
+        }
+        .btn-download:hover {
+             background-color: white;
+             color: #1d4ed8;
+             border-color: #1d4ed8;
+        }
         .text-shadow-lg {
             text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
         }
@@ -155,7 +164,7 @@
                         <p><strong>Día 14-15:</strong> Días en Roma y traslado al aeropuerto.</p>
                     </div>
                     <div class="mt-auto">
-                         <a href="#contacto" class="inline-block mt-6 px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
+                         <a href="#contacto" id="consultar-grupal-btn" class="inline-block mt-6 px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
                     </div>
                 </div>
             </div>
@@ -178,7 +187,7 @@
                         <!-- La información de la ciudad se inserta aquí con JavaScript -->
                     </div>
                      <div class="text-center mt-10">
-                        <a href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
+                        <a href="#contacto" id="consultar-personalizado-btn" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
                      </div>
                 </div>
             </div>
@@ -188,6 +197,14 @@
         <section id="contacto" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Contacta con Nosotros</h2>
              <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl text-center">
+                 <!-- Div para descarga del itinerario -->
+                 <div id="download-container" class="hidden text-center mb-8">
+                     <a href="itinerario-sur-italia.pdf" download="Itinerario-Sur-Italia.pdf" class="inline-flex items-center justify-center w-full max-w-md mx-auto px-6 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
+                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Descargar Itinerario "El Alma del Sur de Italia"
+                    </a>
+                 </div>
+
                  <p class="text-lg text-gray-600 mb-8">¿Listo para tu aventura italiana? Haz clic en el botón para contarnos sobre el viaje de tus sueños y nos pondremos en contacto a la brevedad.</p>
                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7kgoep9JLFQRhX4P1-y2jMH251Q1RvsJR6mz5igr_B6kIdg/viewform" target="_blank" rel="noopener noreferrer" class="inline-block w-full max-w-xs mx-auto btn btn-primary text-lg transition-transform transform hover:scale-105">
                     ¡Comienza tu consulta aquí!
@@ -256,17 +273,42 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const destinationsContainer = document.getElementById('destinations-container');
             const cityInfoCard = document.getElementById('city-info-card');
-            
+            const downloadContainer = document.getElementById('download-container');
+            const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
+            const consultarPersonalizadoBtn = document.getElementById('consultar-personalizado-btn');
+            const navLinksToContact = document.querySelectorAll('a[href="#contacto"]:not(#consultar-grupal-btn)');
+
             // --- Event Listeners ---
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
             });
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
+
+            // Oculta el menú móvil al hacer clic en cualquier enlace del menú
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Muestra el botón de descarga solo para la consulta grupal
+            if (consultarGrupalBtn) {
+                consultarGrupalBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (downloadContainer) {
+                        downloadContainer.classList.remove('hidden');
                     }
+                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // Asegura que el botón de descarga esté oculto para otras consultas
+            navLinksToContact.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (downloadContainer) {
+                        downloadContainer.classList.add('hidden');
+                    }
+                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
                 });
             });
 
