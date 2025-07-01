@@ -88,24 +88,6 @@
         header {
             border-bottom: 1px solid #e5e7eb;
         }
-        input:focus, textarea:focus {
-             box-shadow: 0 0 0 2px rgba(0, 100, 0, 0.3);
-        }
-        #form-status {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            font-weight: bold;
-        }
-        .status-success {
-            background-color: #d1fae5;
-            color: #065f46;
-        }
-        .status-error {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
     </style>
 </head>
 <body class="antialiased">
@@ -135,8 +117,7 @@
 
     <!-- Sección Principal (Hero) -->
     <section class="hero-section text-white min-h-[60vh] flex flex-col justify-center items-center">
-        <!-- CAMBIO DE PRUEBA -->
-        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4 text-shadow-lg">Prueba de Conexión</h1>
+        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4 text-shadow-lg">Descubre Italia</h1>
         <p class="text-xl md:text-2xl text-center">Un viaje por el corazón del arte, la historia y el sabor.</p>
     </section>
 
@@ -147,7 +128,7 @@
         <section id="paquetes" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
             <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Únete a nuestras aventuras cuidadosamente diseñadas y vive una experiencia inolvidable en la mejor compañía.</p>
-
+            
             <div class="bg-white rounded-lg shadow-2xl overflow-hidden md:flex">
                 <div class="md:w-2/5">
                     <img id="grupal-image" src="https://images.unsplash.com/photo-1617906915399-63319082f42a?q=80&w=800&auto=format&fit=crop" alt="Costa de Polignano a Mare" class="w-full h-full object-cover">
@@ -173,8 +154,8 @@
                         <p><strong>Día 13:</strong> Pompeya y traslado a Roma.</p>
                         <p><strong>Día 14-15:</strong> Días en Roma y traslado al aeropuerto.</p>
                     </div>
-                    <div class="mt-auto pt-6">
-                        <a id="consultar-grupal-btn" href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
+                    <div class="mt-auto">
+                         <a href="#contacto" class="inline-block mt-6 px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
                     </div>
                 </div>
             </div>
@@ -197,49 +178,20 @@
                         <!-- La información de la ciudad se inserta aquí con JavaScript -->
                     </div>
                      <div class="text-center mt-10">
-                        <a id="consultar-personalizado-btn" href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
+                        <a href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
                      </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección: Contacto -->
+        <!-- Sección: Contacto Simplificada -->
         <section id="contacto" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Contacta con Nosotros</h2>
-             <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl">
-                 <p class="text-center text-gray-600 mb-6">¿Listo para tu aventura italiana? Envíanos tu consulta y nos pondremos en contacto a la brevedad.</p>
-                 
-                 <div id="download-container" class="text-center mb-8 hidden">
-                     <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
-                        <p class="font-bold text-lg mb-2 text-green-800">¡Gracias por tu interés en nuestro viaje grupal!</p>
-                        <p class="text-gray-700 mb-4">Puedes descargar el itinerario detallado aquí mismo.</p>
-                        <a href="itinerario-Sur-italia.pdf" download="Itinerario-Completo-Sur-de-Italia.pdf" class="inline-flex items-center justify-center w-full md:w-auto px-8 py-3 rounded-lg font-bold btn btn-primary transition-transform transform hover:scale-105">
-                           <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                           Descargar Itinerario "Sur de Italia"
-                       </a>
-                    </div>
-                 </div>
-
-                 <!-- Formulario de Contacto -->
-                 <form id="contact-form">
-                     <div class="mb-4">
-                         <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
-                         <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required>
-                     </div>
-                     <div class="mb-4">
-                         <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-                         <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required>
-                     </div>
-                     <div class="mb-4">
-                         <label for="message" class="block text-gray-700 font-bold mb-2">Mensaje</label>
-                         <textarea id="message" name="message" rows="5" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required placeholder="Cuéntanos sobre el viaje que sueñas, si te interesa un paquete grupal o uno personalizado..."></textarea>
-                     </div>
-                     <div class="text-center">
-                         <button type="submit" class="w-full btn btn-primary">Enviar Consulta</button>
-                     </div>
-                 </form>
-                 <!-- Mensaje de estado del formulario -->
-                 <div id="form-status" class="hidden"></div>
+             <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl text-center">
+                 <p class="text-lg text-gray-600 mb-8">¿Listo para tu aventura italiana? Haz clic en el botón para contarnos sobre el viaje de tus sueños y nos pondremos en contacto a la brevedad.</p>
+                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7kgoep9JLFQRhX4P1-y2jMH251Q1RvsJR6mz5igr_B6kIdg/viewform" target="_blank" rel="noopener noreferrer" class="inline-block w-full max-w-xs mx-auto btn btn-primary text-lg transition-transform transform hover:scale-105">
+                    ¡Comienza tu consulta aquí!
+                 </a>
              </div>
         </section>
 
@@ -252,117 +204,64 @@
         </div>
     </footer>
 
-    <!-- Scripts de Firebase -->
-    <script type="module">
-        // Importa las funciones que necesitas de los SDKs
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        
-        // La configuración está directamente aquí para evitar problemas de carga de archivos.
-        const firebaseConfig = {
-          apiKey: "AIzaSyDGKHIZSPV8cUbiAN4uskWHd_ePBn-hFdE",
-          authDomain: "bellitalia-viajes.firebaseapp.com",
-          projectId: "bellitalia-viajes",
-          storageBucket: "bellitalia-viajes.appspot.com",
-          messagingSenderId: "718574565165",
-          appId: "1:718574565165:web:19a11d2971f19bbc9c05a4",
-          measurementId: "G-2Q5BKCF0GJ"
-        };
-
-        // --- Inicialización de Firebase ---
-        let db;
-        const formStatus = document.getElementById('form-status');
-
-        try {
-            const app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            const auth = getAuth(app);
-            await signInAnonymously(auth);
-            console.log("Conexión con Firebase y autenticación anónima exitosas.");
-        } catch (error) {
-            console.error("Error al inicializar Firebase:", error);
-            db = null; // Asegura que la DB no se use si hay error
-            formStatus.textContent = 'Error de configuración. El formulario está deshabilitado.';
-            formStatus.className = 'status-error';
-            formStatus.classList.remove('hidden');
-        }
-
-        // Lógica del formulario de contacto
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            if (!db) {
-                formStatus.textContent = 'Error: No se puede conectar a la base de datos.';
-                formStatus.className = 'status-error';
-                formStatus.classList.remove('hidden');
-                return;
-            }
-
-            const name = contactForm.name.value;
-            const email = contactForm.email.value;
-            const message = contactForm.message.value;
-
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Enviando...';
-
-            try {
-                // Para GitHub Pages, usaremos un ID de app genérico.
-                const appId = 'bellitalia-viajes-github';
-                const collectionPath = `artifacts/${appId}/public/data/consultas`;
-                
-                await addDoc(collection(db, collectionPath), {
-                    name: name,
-                    email: email,
-                    message: message,
-                    timestamp: new Date()
-                });
-                
-                formStatus.textContent = '¡Gracias por tu consulta! Nos pondremos en contacto pronto.';
-                formStatus.className = 'status-success';
-                formStatus.classList.remove('hidden');
-                contactForm.reset();
-
-            } catch (error) {
-                console.error("Error al añadir el documento: ", error);
-                formStatus.textContent = 'Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.';
-                formStatus.className = 'status-error';
-                formStatus.classList.remove('hidden');
-            } finally {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Enviar Consulta';
-            }
-        });
-    </script>
-
-    <!-- Bloque de JavaScript para la lógica de la página (sin cambios)-->
+    <!-- Bloque de JavaScript para la lógica de la página -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Datos de las ciudades para la sección de viajes a medida
             const cityData = {
-                roma: { title: "Roma, la Ciudad Eterna", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana." },
-                venosa: { title: "Venosa, Cuna de Horacio", image: "https://images.unsplash.com/photo-1623394023742-2762b7470636?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero." },
-                sorrento: { title: "Sorrento y la Costa Amalfitana", image: "https://images.unsplash.com/photo-1563275436-2cf72635294a?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> La puerta de entrada a la Costa Amalfitana. Disfruta de sus vistas al Vesubio y el Golfo de Nápoles. Desde aquí, explora Positano, Amalfi y la isla de Capri.<br><strong>Sabores:</strong> El aroma de los limones es el protagonista. Prueba el limoncello, la delizia al limone y los gnocchi alla sorrentina." },
-                florencia: { title: "Florencia, Cuna del Arte", image: "https://images.unsplash.com/photo-1505923989938-160c878fab4e?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Sumérgete en el Renacimiento en la Galería Uffizi y la Galería de la Academia. Maravíllate con el Duomo de Brunelleschi y cruza el icónico Ponte Vecchio.<br><strong>Sabores:</strong> No te puedes perder una Bistecca alla Fiorentina, la sopa ribollita o un panino al lampredotto para los más aventureros." },
-                milan: { title: "Milán, Capital de la Moda", image: "https://images.unsplash.com/photo-1510252123982-f5e94b2a8e8f?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Visita el majestuoso Duomo gótico, la lujosa Galería Vittorio Emanuele II y el Teatro alla Scala. Descubre el arte contemporáneo en el barrio de Brera.<br><strong>Sabores:</strong> El risotto alla milanese con azafrán y la cotoletta alla milanese son platos obligatorios. Disfruta de un aperitivo al atardecer." },
-                capri: { title: "Capri, la Isla del Glamour", image: "https://images.unsplash.com/photo-1534445836885-3b02c4b82163?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Navega por los Faraglioni, visita la Gruta Azul y pasea por sus exclusivas boutiques. Sube en funicular a la Piazzetta para disfrutar de vistas espectaculares.<br><strong>Sabores:</strong> Prueba la ensalada caprese con los tomates más frescos y la mozzarella de búfala, y de postre, la Torta Caprese de chocolate y almendras." },
-                pisa: { title: "Pisa y su Torre Inclinada", image: "https://images.unsplash.com/photo-1559642846-2f198124c653?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno." },
-                lago_di_como: { title: "Lago di Como, Lujo y Naturaleza", image: "https://images.unsplash.com/photo-1549448834-3a6839a9a0f4?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas." }
+                roma: {
+                    title: "Roma, la Ciudad Eterna",
+                    image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=800&auto=format&fit=crop",
+                    description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana."
+                },
+                venosa: {
+                    title: "Venosa, Cuna de Horacio",
+                    image: "https://images.unsplash.com/photo-1623394023742-2762b7470636?q=80&w=800&auto=format&fit=crop",
+                    description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero."
+                },
+                sorrento: {
+                    title: "Sorrento y la Costa Amalfitana",
+                    image: "https://images.unsplash.com/photo-1563275436-2cf72635294a?q=80&w=800&auto=format&fit=crop",
+                    description: "<strong>Encantos:</strong> La puerta de entrada a la Costa Amalfitana. Disfruta de sus vistas al Vesubio y el Golfo de Nápoles. Desde aquí, explora Positano, Amalfi y la isla de Capri.<br><strong>Sabores:</strong> El aroma de los limones es el protagonista. Prueba el limoncello, la delizia al limone y los gnocchi alla sorrentina."
+                },
+                florencia: {
+                    title: "Florencia, Cuna del Arte",
+                    image: "https://images.unsplash.com/photo-1505923989938-160c878fab4e?q=80&w=800&auto=format&fit=crop",
+                    description: "<strong>Encantos:</strong> Sumérgete en el Renacimiento en la Galería Uffizi y la Galería de la Academia. Maravíllate con el Duomo de Brunelleschi y cruza el icónico Ponte Vecchio.<br><strong>Sabores:</strong> No te puedes perder una Bistecca alla Fiorentina, la sopa ribollita o un panino al lampredotto para los más aventureros."
+                },
+                milan: {
+                    title: "Milán, Capital de la Moda",
+                    image: "https://images.unsplash.com/photo-1510252123982-f5e94b2a8e8f?q=80&w=800&auto=format&fit=crop",
+                    description: "<strong>Encantos:</strong> Visita el majestuoso Duomo gótico, la lujosa Galería Vittorio Emanuele II y el Teatro alla Scala. Descubre el arte contemporáneo en el barrio de Brera.<br><strong>Sabores:</strong> El risotto alla milanese con azafrán y la cotoletta alla milanese son platos obligatorios. Disfruta de un aperitivo al atardecer."
+                },
+                capri: {
+                    title: "Capri, la Isla del Glamour",
+                    image: "https://images.unsplash.com/photo-1534445836885-3b02c4b82163?q=80&w=800&auto=format&fit=crop",
+                    description: "<strong>Encantos:</strong> Navega por los Faraglioni, visita la Gruta Azul y pasea por sus exclusivas boutiques. Sube en funicular a la Piazzetta para disfrutar de vistas espectaculares.<br><strong>Sabores:</strong> Prueba la ensalada caprese con los tomates más frescos y la mozzarella de búfala, y de postre, la Torta Caprese de chocolate y almendras."
+                },
+                pisa: {
+                    title: "Pisa y su Torre Inclinada",
+                    image: "https://images.unsplash.com/photo-1559642846-2f198124c653?q=80&w=800&auto=format&fit=crop",
+                    description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno."
+                },
+                lago_di_como: {
+                    title: "Lago di Como, Lujo y Naturaleza",
+                    image: "https://images.unsplash.com/photo-1549448834-3a6839a9a0f4?q=80&w=800&auto=format&fit=crop",
+                    description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas."
+                }
             };
-
+            
+            // --- Inicialización de Elementos ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const destinationsContainer = document.getElementById('destinations-container');
             const cityInfoCard = document.getElementById('city-info-card');
-            const downloadContainer = document.getElementById('download-container');
-            const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
-            const consultarPersonalizadoBtn = document.getElementById('consultar-personalizado-btn');
-
+            
+            // --- Event Listeners ---
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
             });
-
+            
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
@@ -371,25 +270,30 @@
                 });
             });
 
-            const cityKeys = Object.keys(cityData);
+            const cityKeys = ['roma', 'venosa', 'sorrento', 'florencia', 'milan', 'capri', 'pisa', 'lago_di_como'];
 
             cityKeys.forEach(key => {
                 const city = cityData[key];
                 const circleContainer = document.createElement('div');
                 circleContainer.className = 'text-center';
+                
                 const circle = document.createElement('div');
                 circle.className = 'destination-circle mx-auto';
                 circle.style.backgroundImage = `url('${city.image}')`;
                 circle.dataset.city = key;
+
                 const name = document.createElement('p');
                 name.className = 'mt-2 font-semibold';
                 name.textContent = city.title.split(',')[0]; 
+
                 circleContainer.appendChild(circle);
                 circleContainer.appendChild(name);
                 destinationsContainer.appendChild(circleContainer);
+
                 circle.addEventListener('click', () => {
                     destinationsContainer.querySelectorAll('.destination-circle').forEach(c => c.classList.remove('active'));
                     circle.classList.add('active');
+
                     cityInfoCard.innerHTML = `
                         <div class="bg-gray-200 p-6 rounded-lg shadow-inner flex flex-col md:flex-row gap-6 items-center relative">
                              <button id="close-card-btn" class="absolute top-2 right-2 text-3xl text-gray-500 hover:text-black leading-none">&times;</button>
@@ -401,6 +305,7 @@
                         </div>
                     `;
                     cityInfoCard.classList.remove('hidden', 'opacity-0', '-translate-y-4');
+                    
                     document.getElementById('close-card-btn').addEventListener('click', () => {
                         cityInfoCard.classList.add('opacity-0', '-translate-y-4');
                         setTimeout(() => cityInfoCard.classList.add('hidden'), 500);
@@ -408,26 +313,6 @@
                     });
                 });
             });
-            
-            if (consultarGrupalBtn) {
-                consultarGrupalBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (downloadContainer) {
-                        downloadContainer.classList.remove('hidden');
-                    }
-                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
-                });
-            }
-
-            if (consultarPersonalizadoBtn) {
-                consultarPersonalizadoBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (downloadContainer) {
-                        downloadContainer.classList.add('hidden');
-                    }
-                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
-                });
-            }
         });
     </script>
 
