@@ -24,7 +24,8 @@
             font-family: 'Dancing Script', cursive;
         }
         .hero-section {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=1920&auto=format&fit=crop');
+            /* Imagen de fondo local para la sección principal */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/roma coliseo portada.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -140,7 +141,8 @@
             
             <div class="bg-white rounded-lg shadow-2xl overflow-hidden md:flex">
                 <div class="md:w-2/5">
-                    <img id="grupal-image" src="https://images.unsplash.com/photo-1617906915399-63319082f42a?q=80&w=800&auto=format&fit=crop" alt="Costa de Polignano a Mare" class="w-full h-full object-cover">
+                    <!-- Ruta de imagen local para el viaje grupal -->
+                    <img id="grupal-image" src="assets/polignano mare grupal.jpg" alt="Costa de Polignano a Mare" class="w-full h-full object-cover">
                 </div>
                 <div class="md:w-3/5 p-6 md:p-8 flex flex-col">
                     <h3 class="text-3xl font-bold mb-2 text-red-700">El Alma del Sur de Italia</h3>
@@ -224,46 +226,46 @@
     <!-- Bloque de JavaScript para la lógica de la página -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Datos de las ciudades para la sección de viajes a medida
+            // Datos de las ciudades con rutas de imágenes locales
             const cityData = {
                 roma: {
                     title: "Roma, la Ciudad Eterna",
-                    image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=800&auto=format&fit=crop",
+                    image: "assets/roma coliseo portada.jpeg",
                     description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana."
                 },
                 venosa: {
                     title: "Venosa, Cuna de Horacio",
-                    image: "https://images.unsplash.com/photo-1623394023742-2762b7470636?q=80&w=800&auto=format&fit=crop",
+                    image: "assets/Venosa zona arq.jpeg",
                     description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero."
                 },
                 sorrento: {
                     title: "Sorrento y la Costa Amalfitana",
-                    image: "https://images.unsplash.com/photo-1563275436-2cf72635294a?q=80&w=800&auto=format&fit=crop",
+                    image: "assets/Costa amalfitana.jpg",
                     description: "<strong>Encantos:</strong> La puerta de entrada a la Costa Amalfitana. Disfruta de sus vistas al Vesubio y el Golfo de Nápoles. Desde aquí, explora Positano, Amalfi y la isla de Capri.<br><strong>Sabores:</strong> El aroma de los limones es el protagonista. Prueba el limoncello, la delizia al limone y los gnocchi alla sorrentina."
                 },
                 florencia: {
                     title: "Florencia, Cuna del Arte",
-                    image: "https://images.unsplash.com/photo-1505923989938-160c878fab4e?q=80&w=800&auto=format&fit=crop",
+                    image: "assets/florencia il duomo.jpg",
                     description: "<strong>Encantos:</strong> Sumérgete en el Renacimiento en la Galería Uffizi y la Galería de la Academia. Maravíllate con el Duomo de Brunelleschi y cruza el icónico Ponte Vecchio.<br><strong>Sabores:</strong> No te puedes perder una Bistecca alla Fiorentina, la sopa ribollita o un panino al lampredotto para los más aventureros."
                 },
                 milan: {
                     title: "Milán, Capital de la Moda",
-                    image: "https://images.unsplash.com/photo-1510252123982-f5e94b2a8e8f?q=80&w=800&auto=format&fit=crop",
+                    image: "assets/Catedral Milan.jpg",
                     description: "<strong>Encantos:</strong> Visita el majestuoso Duomo gótico, la lujosa Galería Vittorio Emanuele II y el Teatro alla Scala. Descubre el arte contemporáneo en el barrio de Brera.<br><strong>Sabores:</strong> El risotto alla milanese con azafrán y la cotoletta alla milanese son platos obligatorios. Disfruta de un aperitivo al atardecer."
                 },
                 capri: {
                     title: "Capri, la Isla del Glamour",
-                    image: "https://images.unsplash.com/photo-1534445836885-3b02c4b82163?q=80&w=800&auto=format&fit=crop",
+                    image: "assets/capri imagen.jpeg",
                     description: "<strong>Encantos:</strong> Navega por los Faraglioni, visita la Gruta Azul y pasea por sus exclusivas boutiques. Sube en funicular a la Piazzetta para disfrutar de vistas espectaculares.<br><strong>Sabores:</strong> Prueba la ensalada caprese con los tomates más frescos y la mozzarella de búfala, y de postre, la Torta Caprese de chocolate y almendras."
                 },
                 pisa: {
                     title: "Pisa y su Torre Inclinada",
-                    image: "https://images.unsplash.com/photo-1559642846-2f198124c653?q=80&w=800&auto=format&fit=crop",
+                    image: "assets/torre de pisa.jpeg",
                     description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno."
                 },
                 lago_di_como: {
                     title: "Lago di Como, Lujo y Naturaleza",
-                    image: "https://images.unsplash.com/photo-1549448834-3a6839a9a0f4?q=80&w=800&auto=format&fit=crop",
+                    image: "assets/lago di como.jpeg",
                     description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas."
                 }
             };
@@ -275,7 +277,6 @@
             const cityInfoCard = document.getElementById('city-info-card');
             const downloadContainer = document.getElementById('download-container');
             const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
-            const consultarPersonalizadoBtn = document.getElementById('consultar-personalizado-btn');
             const navLinksToContact = document.querySelectorAll('a[href="#contacto"]:not(#consultar-grupal-btn)');
 
             // --- Event Listeners ---
@@ -283,14 +284,12 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Oculta el menú móvil al hacer clic en cualquier enlace del menú
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
                 });
             });
             
-            // Muestra el botón de descarga solo para la consulta grupal
             if (consultarGrupalBtn) {
                 consultarGrupalBtn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -301,7 +300,6 @@
                 });
             }
 
-            // Asegura que el botón de descarga esté oculto para otras consultas
             navLinksToContact.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
