@@ -173,7 +173,6 @@
                         <p><strong>Día 14-15:</strong> Días en Roma y traslado al aeropuerto.</p>
                     </div>
                     <div class="mt-auto pt-6">
-                        <!-- CAMBIO: Este botón ahora activa la sección de descarga más abajo -->
                         <a id="consultar-grupal-btn" href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
                     </div>
                 </div>
@@ -197,7 +196,6 @@
                         <!-- La información de la ciudad se inserta aquí con JavaScript -->
                     </div>
                      <div class="text-center mt-10">
-                        <!-- CAMBIO: Este botón oculta la sección de descarga -->
                         <a id="consultar-personalizado-btn" href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
                      </div>
                 </div>
@@ -210,7 +208,6 @@
              <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl">
                  <p class="text-center text-gray-600 mb-6">¿Listo para tu aventura italiana? Envíanos tu consulta y nos pondremos en contacto a la brevedad.</p>
                  
-                 <!-- CAMBIO: Contenedor del itinerario, oculto por defecto -->
                  <div id="download-container" class="text-center mb-8 hidden">
                      <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
                         <p class="font-bold text-lg mb-2 text-green-800">¡Gracias por tu interés en nuestro viaje grupal!</p>
@@ -254,78 +251,79 @@
         </div>
     </footer>
 
-    <!-- Scripts de Firebase (sin cambios) -->
+    <!-- Scripts de Firebase -->
     <script type="module">
+        // Importa las funciones que necesitas de los SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        
+        // CAMBIO: La configuración ahora está directamente aquí para depurar el problema.
+        const firebaseConfig = {
+          apiKey: "AIzaSyDGKHIZSPV8cUbiAN4uskWHd_ePBn-hFdE",
+          authDomain: "bellitalia-viajes.firebaseapp.com",
+          projectId: "bellitalia-viajes",
+          storageBucket: "bellitalia-viajes.appspot.com",
+          messagingSenderId: "718574565165",
+          appId: "1:718574565165:web:19a11d2971f19bbc9c05a4",
+          measurementId: "G-2Q5BKCF0GJ"
+        };
 
-        let firebaseConfig;
-        let app;
+        // --- Inicialización de Firebase ---
         let db;
-        let auth;
         const formStatus = document.getElementById('form-status');
+
         try {
-            const configModule = await import('./firebase-config.js');
-            firebaseConfig = configModule.firebaseConfig;
-        } catch (e) {
-            if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-                firebaseConfig = JSON.parse(__firebase_config);
-            } else {
-                firebaseConfig = null;
-            }
-        }
-        if (firebaseConfig && firebaseConfig.apiKey) {
-            try {
-                app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-                const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-            } catch (error) {
-                console.error("Error al inicializar Firebase:", error);
-                db = null;
-                formStatus.textContent = 'Error de conexión. El formulario está deshabilitado.';
-                formStatus.className = 'status-error';
-                formStatus.classList.remove('hidden');
-            }
-        } else {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            const auth = getAuth(app);
+            await signInAnonymously(auth);
+            console.log("Conexión con Firebase y autenticación anónima exitosas.");
+        } catch (error) {
+            console.error("Error al inicializar Firebase:", error);
+            db = null; // Asegura que la DB no se use si hay error
             formStatus.textContent = 'Error de configuración. El formulario está deshabilitado.';
             formStatus.className = 'status-error';
             formStatus.classList.remove('hidden');
         }
+
+        // Lógica del formulario de contacto
         const contactForm = document.getElementById('contact-form');
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
             if (!db) {
                 formStatus.textContent = 'Error: No se puede conectar a la base de datos.';
                 formStatus.className = 'status-error';
                 formStatus.classList.remove('hidden');
                 return;
             }
+
             const name = contactForm.name.value;
             const email = contactForm.email.value;
             const message = contactForm.message.value;
+
             const submitButton = contactForm.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.textContent = 'Enviando...';
+
             try {
-                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                // Para GitHub Pages, usaremos un ID de app genérico.
+                const appId = 'bellitalia-viajes-github';
                 const collectionPath = `artifacts/${appId}/public/data/consultas`;
-                const docRef = await addDoc(collection(db, collectionPath), {
+                
+                await addDoc(collection(db, collectionPath), {
                     name: name,
                     email: email,
                     message: message,
                     timestamp: new Date()
                 });
+                
                 formStatus.textContent = '¡Gracias por tu consulta! Nos pondremos en contacto pronto.';
                 formStatus.className = 'status-success';
                 formStatus.classList.remove('hidden');
                 contactForm.reset();
+
             } catch (error) {
                 console.error("Error al añadir el documento: ", error);
                 formStatus.textContent = 'Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.';
@@ -338,10 +336,9 @@
         });
     </script>
 
-    <!-- Bloque de JavaScript para la lógica de la página -->
+    <!-- Bloque de JavaScript para la lógica de la página (sin cambios)-->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Datos de las ciudades para la sección de viajes a medida
             const cityData = {
                 roma: { title: "Roma, la Ciudad Eterna", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana." },
                 venosa: { title: "Venosa, Cuna de Horacio", image: "https://images.unsplash.com/photo-1623394023742-2762b7470636?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero." },
@@ -353,18 +350,14 @@
                 lago_di_como: { title: "Lago di Como, Lujo y Naturaleza", image: "https://images.unsplash.com/photo-1549448834-3a6839a9a0f4?q=80&w=800&auto=format&fit=crop", description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas." }
             };
 
-            // --- Inicialización de Elementos ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const destinationsContainer = document.getElementById('destinations-container');
             const cityInfoCard = document.getElementById('city-info-card');
-            
-            // CAMBIO: Elementos para controlar la descarga
             const downloadContainer = document.getElementById('download-container');
             const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
             const consultarPersonalizadoBtn = document.getElementById('consultar-personalizado-btn');
 
-            // --- Event Listeners ---
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
             });
@@ -383,24 +376,19 @@
                 const city = cityData[key];
                 const circleContainer = document.createElement('div');
                 circleContainer.className = 'text-center';
-
                 const circle = document.createElement('div');
                 circle.className = 'destination-circle mx-auto';
                 circle.style.backgroundImage = `url('${city.image}')`;
                 circle.dataset.city = key;
-
                 const name = document.createElement('p');
                 name.className = 'mt-2 font-semibold';
                 name.textContent = city.title.split(',')[0]; 
-
                 circleContainer.appendChild(circle);
                 circleContainer.appendChild(name);
                 destinationsContainer.appendChild(circleContainer);
-
                 circle.addEventListener('click', () => {
                     destinationsContainer.querySelectorAll('.destination-circle').forEach(c => c.classList.remove('active'));
                     circle.classList.add('active');
-
                     cityInfoCard.innerHTML = `
                         <div class="bg-gray-200 p-6 rounded-lg shadow-inner flex flex-col md:flex-row gap-6 items-center relative">
                              <button id="close-card-btn" class="absolute top-2 right-2 text-3xl text-gray-500 hover:text-black leading-none">&times;</button>
@@ -412,7 +400,6 @@
                         </div>
                     `;
                     cityInfoCard.classList.remove('hidden', 'opacity-0', '-translate-y-4');
-
                     document.getElementById('close-card-btn').addEventListener('click', () => {
                         cityInfoCard.classList.add('opacity-0', '-translate-y-4');
                         setTimeout(() => cityInfoCard.classList.add('hidden'), 500);
@@ -421,24 +408,23 @@
                 });
             });
             
-            // CAMBIO: Lógica para mostrar/ocultar la descarga del itinerario
             if (consultarGrupalBtn) {
                 consultarGrupalBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); // Previene el salto de página inmediato
+                    e.preventDefault();
                     if (downloadContainer) {
-                        downloadContainer.classList.remove('hidden'); // Muestra la sección de descarga
+                        downloadContainer.classList.remove('hidden');
                     }
-                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' }); // Desplaza suavemente a la sección de contacto
+                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
                 });
             }
 
             if (consultarPersonalizadoBtn) {
                 consultarPersonalizadoBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); // Previene el salto de página inmediato
+                    e.preventDefault();
                     if (downloadContainer) {
-                        downloadContainer.classList.add('hidden'); // Oculta la sección de descarga
+                        downloadContainer.classList.add('hidden');
                     }
-                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' }); // Desplaza suavemente a la sección de contacto
+                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
                 });
             }
         });
