@@ -16,8 +16,8 @@
     <style>
         body {
             font-family: 'Lora', serif;
-            background-color: #fdfaf6; /* Un blanco roto cálido, similar al papel */
-            color: #3d405b; /* Un casi negro más suave */
+            background-color: #fdfaf6;
+            color: #3d405b;
         }
         h1, h2, h3, .nav-link {
             font-family: 'Playfair Display', serif;
@@ -100,9 +100,7 @@
             border-bottom: 1px solid #e5e7eb;
         }
 
-        /* --- NUEVOS ESTILOS PARA ANIMACIONES --- */
-
-        /* Efecto de subrayado para los enlaces de navegación */
+        /* --- ESTILOS PARA ANIMACIONES --- */
         .nav-link-effect {
             position: relative;
         }
@@ -122,8 +120,6 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
-
-        /* Animación de aparición para las secciones */
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
@@ -132,6 +128,34 @@
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* --- NUEVOS ESTILOS PARA EL BOTÓN "VOLVER ARRIBA" --- */
+        #back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #006400;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+            z-index: 1000;
+        }
+        #back-to-top-btn:hover {
+            background-color: #004d00; /* Un verde un poco más oscuro */
+        }
+        #back-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
@@ -142,7 +166,6 @@
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-4xl font-bold text-green-700 nav-link logo">Bell'Italia</a>
             <div class="hidden md:flex space-x-8">
-                <!-- Se añade la clase para el efecto hover -->
                 <a href="#paquetes" class="text-gray-700 hover:text-green-700 nav-link text-lg nav-link-effect">Salidas Grupales</a>
                 <a href="#personalizados" class="text-gray-700 hover:text-green-700 nav-link text-lg nav-link-effect">Viajes a Medida</a>
                 <a href="#contacto" class="text-gray-700 hover:text-green-700 nav-link text-lg nav-link-effect">Contacto</a>
@@ -153,7 +176,6 @@
                 </button>
             </div>
         </nav>
-        <!-- Menú para móviles -->
         <div id="mobile-menu" class="hidden md:hidden">
             <a href="#paquetes" class="block py-3 px-4 text-sm hover:bg-gray-200 nav-link">Salidas Grupales</a>
             <a href="#personalizados" class="block py-3 px-4 text-sm hover:bg-gray-200 nav-link">Viajes a Medida</a>
@@ -170,7 +192,6 @@
     <!-- Contenido Principal -->
     <main class="container mx-auto px-4 sm:px-6 py-16">
 
-        <!-- Sección: Salidas Grupales (con clase para animación) -->
         <section id="paquetes" class="my-16 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
             <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Únete a nuestras aventuras cuidadosamente diseñadas y vive una experiencia inolvidable en la mejor compañía.</p>
@@ -207,7 +228,6 @@
             </div>
         </section>
 
-        <!-- Sección: Viajes a Medida (con clase para animación) -->
         <section id="personalizados" class="my-16 section-bg p-8 md:p-12 rounded-lg fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Viajes a Medida</h2>
             <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Diseñamos la aventura de tus sueños. Tú eliges el destino, nosotros nos encargamos de la magia. Aquí un ejemplo de lo que podemos crear.</p>
@@ -218,10 +238,10 @@
                         Marta y José querían un viaje que combinara la historia clásica con el encanto del norte. Creamos para ellos una ruta única que les permitió vivir lo mejor de ambos mundos, con la comodidad de los trenes de alta velocidad y estancias en hoteles con encanto. Haz clic en cada destino para ver sus maravillas.
                     </p>
                     <div id="destinations-container" class="flex flex-wrap justify-center items-start gap-4 md:gap-6 mb-8">
-                        <!-- Los círculos de destinos se insertan aquí con JavaScript -->
+                        <!-- Círculos de destinos -->
                     </div>
                     <div id="city-info-card" class="hidden opacity-0 transform -translate-y-4 max-w-3xl mx-auto">
-                        <!-- La información de la ciudad se inserta aquí con JavaScript -->
+                        <!-- Información de la ciudad -->
                     </div>
                      <div class="text-center mt-10">
                         <a href="#contacto" id="consultar-personalizado-btn" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
@@ -230,18 +250,15 @@
             </div>
         </section>
 
-        <!-- Sección: Contacto Simplificada (con clase para animación) -->
         <section id="contacto" class="my-16 fade-in-section">
             <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Contacta con Nosotros</h2>
              <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl text-center">
-                 <!-- Div para descarga del itinerario -->
                  <div id="download-container" class="hidden text-center mb-8">
                      <a href="itinerario-sur-italia.pdf" download="Itinerario-Sur-Italia.pdf" class="inline-flex items-center justify-center w-full max-w-md mx-auto px-6 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         Descargar Itinerario "El Alma del Sur de Italia"
                     </a>
                  </div>
-
                  <p class="text-lg text-gray-600 mb-8">¿Listo para tu aventura italiana? Haz clic en el botón para contarnos sobre el viaje de tus sueños y nos pondremos en contacto a la brevedad.</p>
                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7kgoep9JLFQRhX4P1-y2jMH251Q1RvsJR6mz5igr_B6kIdg/viewform" target="_blank" rel="noopener noreferrer" class="inline-block w-full max-w-xs mx-auto btn btn-primary text-lg transition-transform transform hover:scale-105">
                     ¡Comienza tu consulta aquí!
@@ -252,16 +269,23 @@
     </main>
 
     <!-- Pie de Página -->
-    <footer class="bg-gray-800 text-white mt-16">
+    <footer id="page-footer" class="bg-gray-800 text-white mt-16">
         <div class="container mx-auto px-6 py-8 text-center">
             <p>&copy; 2025 Bell'Italia. Un viaje inolvidable te espera.</p>
         </div>
     </footer>
 
+    <!-- NUEVO ELEMENTO: Botón "Volver Arriba" -->
+    <button id="back-to-top-btn" title="Volver arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+
     <!-- Bloque de JavaScript para la lógica de la página -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Datos de las ciudades con las nuevas rutas de imágenes locales
             const cityData = {
                 roma: {
                     title: "Roma, la Ciudad Eterna",
@@ -305,7 +329,6 @@
                 }
             };
             
-            // --- Inicialización de Elementos ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const destinationsContainer = document.getElementById('destinations-container');
@@ -314,7 +337,6 @@
             const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
             const navLinksToContact = document.querySelectorAll('a[href="#contacto"]:not(#consultar-grupal-btn)');
 
-            // --- Event Listeners ---
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
             });
@@ -391,23 +413,52 @@
         });
     </script>
 
-    <!-- NUEVO SCRIPT PARA ANIMACIÓN AL DESPLAZARSE -->
+    <!-- SCRIPT PARA ANIMACIONES -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
+            // Animación de aparición de secciones
+            const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                     }
                 });
-            }, {
-                threshold: 0.1 // La animación se dispara cuando el 10% del elemento es visible
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                sectionObserver.observe(section);
             });
 
-            const sections = document.querySelectorAll('.fade-in-section');
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+            // --- NUEVA LÓGICA PARA EL BOTÓN "VOLVER ARRIBA" ---
+            const backToTopBtn = document.getElementById('back-to-top-btn');
+            const footer = document.getElementById('page-footer');
+
+            // Observador para el pie de página
+            const footerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Muestra el botón cuando el footer es visible
+                        backToTopBtn.classList.add('show');
+                    } else {
+                        // Oculta el botón cuando el footer no es visible
+                        backToTopBtn.classList.remove('show');
+                    }
+                });
+            }, { threshold: 0.1 }); // Se activa cuando al menos un 10% del footer es visible
+
+            if (footer) {
+                footerObserver.observe(footer);
+            }
+
+            // Funcionalidad de clic para el botón
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
         });
     </script>
 
