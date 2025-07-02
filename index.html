@@ -100,6 +100,11 @@
             border-bottom: 1px solid #e5e7eb;
         }
 
+        /* CÓDIGO PARA CORREGIR EL SCROLL */
+        section[id] {
+            scroll-margin-top: 100px;
+        }
+
         /* ESTILOS PARA ANIMACIONES */
         .nav-link-effect {
             position: relative;
@@ -257,7 +262,6 @@
                         <p class="text-gray-600 mb-6 leading-relaxed flex-grow">
                             Sumérgete en el alma vibrante del "Sur de Italia", donde cada rincón te espera con un encanto único. Con la coordinación de quienes vivieron sus calles y la guía de expertos locales, descubrirás una experiencia auténtica.
                         </p>
-                         <!-- --- ITINERARIO INTERACTIVO CON DESCRIPCIONES ACTUALIZADAS --- -->
                          <div id="itinerary-accordion">
                             <div class="accordion-item">
                                 <div class="accordion-header">
@@ -328,7 +332,7 @@
                                     <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
                                 </div>
                                 <div class="accordion-content">
-                                    <p>La majestuosidad de la Magna Grecia nos sobrecogerá en el Valle de los Templos. Como contrapunto, ascenderemos a Erice, un nido de águilas medieval con vistas que se pierden en el infinito.</p>
+                                    <p>La majestuosidad de la Magna Grecia nos dejará sin aliento en el Valle de los Templos. Como contrapunto, ascenderemos a Erice, un nido de águilas medieval con vistas que se pierden en el infinito.</p>
                                 </div>
                             </div>
                              <div class="accordion-item">
@@ -337,7 +341,7 @@
                                     <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
                                 </div>
                                 <div class="accordion-content">
-                                    <p>Nos sumergiremos en el caos vibrante y la belleza decadente de Palermo. Sus mercados, iglesias y palacios nos prepararán para una travesía nocturna en ferry, mecidos por las olas del Tirreno.</p>
+                                    <p>Nos sumergiremos en el caos vibrante y la belleza cargada de historia de Palermo. Sus mercados, iglesias y palacios nos prepararán para una travesía nocturna en ferry, mecidos por las olas del Tirreno.</p>
                                 </div>
                             </div>
                              <div class="accordion-item">
@@ -501,6 +505,19 @@
                     circle.classList.add('active');
                     cityInfoCard.innerHTML = `<div class="bg-gray-200 p-6 rounded-lg shadow-inner flex flex-col md:flex-row gap-6 items-center relative"><button id="close-card-btn" class="absolute top-2 right-2 text-3xl text-gray-500 hover:text-black leading-none">&times;</button><img src="${city.image}" class="w-full md:w-1/3 h-48 object-cover rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/000000?text=Imagen+no+disponible';"><div class="md:w-2/3"><h4 class="text-2xl font-bold mb-3 text-gray-800">${city.title}</h4><p class="text-sm md:text-base text-gray-700 leading-relaxed">${city.description}</p></div></div>`;
                     cityInfoCard.classList.remove('hidden', 'opacity-0', '-translate-y-4');
+                    
+                    // --- LÓGICA DE SCROLL INTELIGENTE ---
+                    setTimeout(() => {
+                        const headerOffset = 110; 
+                        const elementPosition = cityInfoCard.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                      
+                        window.scrollTo({
+                             top: offsetPosition,
+                             behavior: "smooth"
+                        });
+                    }, 100); 
+
                     document.getElementById('close-card-btn').addEventListener('click', () => {
                         cityInfoCard.classList.add('opacity-0', '-translate-y-4');
                         setTimeout(() => cityInfoCard.classList.add('hidden'), 500);
