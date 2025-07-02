@@ -16,7 +16,6 @@
     <style>
         body {
             font-family: 'Lora', serif;
-            /* --- CAMBIO PRINCIPAL: Nuevo color de fondo sutil --- */
             background-color: #fcfbf8; 
             color: #3d405b;
         }
@@ -170,12 +169,45 @@
         }
         .social-link:hover {
             transform: scale(1.1);
-            color: #a7f3d0; /* Un verde menta claro para el hover */
+            color: #a7f3d0;
         }
         .social-link p {
-            font-size: 0.75rem; /* 12px */
-            margin-top: 0.25rem; /* 4px */
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
             font-family: 'Lora', serif;
+        }
+        
+        /* ESTILOS PARA EL ACORDEÓN DEL ITINERARIO */
+        .accordion-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: #f9fafb;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            padding: 0 0.5rem;
+        }
+        .accordion-content p {
+            padding-bottom: 1rem;
+            font-style: italic;
+            color: #4b5563;
+        }
+        .accordion-icon {
+            transition: transform 0.4s ease;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
         }
     </style>
 </head>
@@ -225,23 +257,128 @@
                         <p class="text-gray-600 mb-6 leading-relaxed flex-grow">
                             Sumérgete en el alma vibrante del "Sur de Italia", donde cada rincón te espera con un encanto único. Con la coordinación de quienes vivieron sus calles y la guía de expertos locales, descubrirás una experiencia auténtica.
                         </p>
-                         <div class="space-y-2 text-gray-700 max-h-60 overflow-y-auto pr-2">
-                            <p><strong>Día 1:</strong> Llegada y noche en Bari.</p>
-                            <p><strong>Día 2:</strong> Polignano a Mare, Monopoli y noche en Lecce.</p>
-                            <p><strong>Día 3:</strong> Lecce, Gallipoli y noche en Lecce.</p>
-                            <p><strong>Día 4:</strong> Alberobello, Grotte di Castellana y noche en Matera.</p>
-                            <p><strong>Día 5:</strong> Matera, pueblo fantasma de Craco y noche en Matera.</p>
-                            <p><strong>Día 6-7:</strong> Tropea, cruce a Sicilia y noches en Taormina.</p>
-                            <p><strong>Día 8:</strong> Siracusa, Ortigia y noche en Agrigento.</p>
-                            <p><strong>Día 9:</strong> Valle de los Templos, Erice y noche en Palermo.</p>
-                            <p><strong>Día 10:</strong> Palermo y ferry nocturno a Nápoles.</p>
-                            <p><strong>Día 11:</strong> Capri, Sorrento, Amalfi y noche en Salerno.</p>
-                            <p><strong>Día 12:</strong> Día libre en Salerno.</p>
-                            <p><strong>Día 13:</strong> Pompeya y traslado a Roma.</p>
-                            <p><strong>Día 14-15:</strong> Días en Roma y traslado al aeropuerto.</p>
+                         <!-- --- ITINERARIO INTERACTIVO CON DESCRIPCIONES ACTUALIZADAS --- -->
+                         <div id="itinerary-accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 1: Llegada y noche en Bari.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>La aventura comienza. A tu llegada a Bari, te recibirán los aromas del Adriático. Tendrás tiempo para instalarte y sentir el primer pulso de la capital de Puglia, una ciudad que equilibra historia y modernidad.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 2: Polignano a Mare, Monopoli y noche en Lecce.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Hoy el mar es protagonista. Sentirás la brisa en Polignano a Mare, un pueblo que parece esculpido en los acantilados. Luego, el encanto marinero de Monopoli nos preparará para el esplendor de Lecce.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 3: Lecce, Gallipoli y noche en Lecce.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Nos dejaremos seducir por la "Florencia del Sur", donde el arte barroco cobra vida en cada fachada. Por la tarde, la amurallada Gallipoli nos contará historias de piratas y pescadores con vistas al mar Jónico.</p>
+                                </div>
+                            </div>
+                             <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 4: Alberobello, Grotte di Castellana y noche en Matera.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Un día de fantasía. Pasearemos por un bosque de "trulli" en Alberobello y luego descenderemos a las entrañas de la tierra para maravillarnos con las catedrales de roca de las Grotte di Castellana.</p>
+                                </div>
+                            </div>
+                             <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 5: Matera, pueblo fantasma de Craco y noche en Matera.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Sentiremos la historia milenaria bajo nuestros pies en los "Sassi" de Matera. El eco del pasado resonará aún más fuerte en Craco, una ciudad silenciosa y congelada en el tiempo que nos dejará sin aliento.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 6-7: Tropea, cruce a Sicilia y noches en Taormina.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Desde la "Costa de los Dioses" en Tropea, nos lanzaremos a la conquista de Sicilia. El cruce del estrecho de Mesina es el preludio a dos noches en la elegante Taormina, con el Etna vigilando el horizonte.</p>
+                                </div>
+                            </div>
+                             <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 8: Siracusa, Ortigia y noche en Agrigento.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Seguiremos las huellas de los antiguos griegos en el imponente parque arqueológico de Siracusa. El día culminará en la mágica isla de Ortigia, un laberinto de callejuelas con alma y sabor a mar.</p>
+                                </div>
+                            </div>
+                             <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 9: Valle de los Templos, Erice y noche en Palermo.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>La majestuosidad de la Magna Grecia nos sobrecogerá en el Valle de los Templos. Como contrapunto, ascenderemos a Erice, un nido de águilas medieval con vistas que se pierden en el infinito.</p>
+                                </div>
+                            </div>
+                             <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 10: Palermo y ferry nocturno a Nápoles.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Nos sumergiremos en el caos vibrante y la belleza decadente de Palermo. Sus mercados, iglesias y palacios nos prepararán para una travesía nocturna en ferry, mecidos por las olas del Tirreno.</p>
+                                </div>
+                            </div>
+                             <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 11: Capri, Sorrento, Amalfi y noche en Salerno.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Un día de postal. Sentiremos el glamour de la isla de Capri, el aroma a limones de Sorrento y los colores pastel de la Costa Amalfitana, un sueño mediterráneo hecho realidad.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 12: Día libre en Salerno.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Una pausa para respirar. Hoy el día es tuyo. Podrás relajarte en la playa, perderte por el centro histórico de Salerno o simplemente disfrutar de un "dolce far niente" con vistas al mar.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 13: Pompeya y traslado a Roma.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Seremos testigos de la historia en Pompeya, caminando por sus calles silenciosas bajo la sombra del Vesubio. Esta profunda experiencia será el cierre perfecto antes de llegar a la grandiosa Roma.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <strong>Día 14-15: Días en Roma y traslado al aeropuerto.</strong>
+                                    <span class="accordion-icon text-2xl font-thin text-gray-500">+</span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Tendrás tiempo libre en la Ciudad Eterna para un último helado, una compra especial o simplemente para lanzar una moneda a la Fontana di Trevi y prometer tu regreso. Nos despediremos en el aeropuerto.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mt-auto">
-                             <a href="#contacto" id="consultar-grupal-btn" class="inline-block mt-6 px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
+                        <div class="mt-auto pt-6">
+                             <a href="#contacto" id="consultar-grupal-btn" class="inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
                         </div>
                     </div>
                 </div>
@@ -374,14 +511,16 @@
         });
     </script>
 
-    <!-- Scripts de Animaciones y Botón Volver Arriba -->
+    <!-- Scripts de Animaciones, Botón Volver Arriba y Acordeón -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Animación de aparición de secciones
             const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } });
             }, { threshold: 0.1 });
             document.querySelectorAll('.fade-in-section').forEach(section => { sectionObserver.observe(section); });
 
+            // Lógica para el botón "Volver Arriba"
             const backToTopBtn = document.getElementById('back-to-top-btn');
             const footer = document.getElementById('page-footer');
             const footerObserver = new IntersectionObserver((entries) => {
@@ -392,6 +531,27 @@
             }, { threshold: 0.1 });
             if (footer) { footerObserver.observe(footer); }
             if (backToTopBtn) { backToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
+
+            // Lógica para el Acordeón del Itinerario
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.accordion-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                        currentlyActive.querySelector('.accordion-content').style.maxHeight = 0;
+                    }
+
+                    item.classList.toggle('active');
+                    const content = item.querySelector('.accordion-content');
+                    if (item.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = 0;
+                    }
+                });
+            });
         });
     </script>
 
