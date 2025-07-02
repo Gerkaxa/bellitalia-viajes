@@ -100,7 +100,7 @@
             border-bottom: 1px solid #e5e7eb;
         }
 
-        /* --- ESTILOS PARA ANIMACIONES --- */
+        /* ESTILOS PARA ANIMACIONES */
         .nav-link-effect {
             position: relative;
         }
@@ -130,7 +130,7 @@
             transform: translateY(0);
         }
 
-        /* --- NUEVOS ESTILOS PARA EL BOTÓN "VOLVER ARRIBA" --- */
+        /* ESTILOS PARA EL BOTÓN "VOLVER ARRIBA" */
         #back-to-top-btn {
             position: fixed;
             bottom: 20px;
@@ -151,11 +151,30 @@
             z-index: 1000;
         }
         #back-to-top-btn:hover {
-            background-color: #004d00; /* Un verde un poco más oscuro */
+            background-color: #004d00;
         }
         #back-to-top-btn.show {
             opacity: 1;
             visibility: visible;
+        }
+
+        /* --- ESTILOS PARA ICONOS SOCIALES --- */
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .social-link:hover {
+            transform: scale(1.1);
+            color: #a7f3d0; /* Un verde menta claro para el hover */
+        }
+        .social-link p {
+            font-size: 0.75rem; /* 12px */
+            margin-top: 0.25rem; /* 4px */
+            font-family: 'Lora', serif;
         }
     </style>
 </head>
@@ -183,99 +202,114 @@
         </div>
     </header>
 
-    <!-- Sección Principal (Hero) -->
-    <section class="hero-section text-white min-h-[60vh] flex flex-col justify-center items-center">
-        <h1 class="text-5xl md:text-7xl font-bold text-center mb-4 text-shadow-lg">Descubre Italia</h1>
-        <p class="text-xl md:text-2xl text-center">Un viaje por el corazón del arte, la historia y el sabor.</p>
-    </section>
-
     <!-- Contenido Principal -->
-    <main class="container mx-auto px-4 sm:px-6 py-16">
-
-        <section id="paquetes" class="my-16 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
-            <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Únete a nuestras aventuras cuidadosamente diseñadas y vive una experiencia inolvidable en la mejor compañía.</p>
-            
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden md:flex">
-                <div class="md:w-2/5">
-                    <img id="grupal-image" src="assets/2 polignano a mare.jpeg" alt="Costa de Polignano a Mare" class="w-full h-full object-cover">
-                </div>
-                <div class="md:w-3/5 p-6 md:p-8 flex flex-col">
-                    <h3 class="text-3xl font-bold mb-2 text-red-700">El Alma del Sur de Italia</h3>
-                    <p class="text-lg font-semibold text-gray-700 mb-4">Mayo 2026 (14 Días / 13 Noches)</p>
-                    <p class="text-gray-600 mb-6 leading-relaxed flex-grow">
-                        Sumérgete en el alma vibrante del "Sur de Italia", donde cada rincón te espera con un encanto único. Con la coordinación de quienes vivieron sus calles y la guía de expertos locales, descubrirás una experiencia auténtica.
-                    </p>
-                     <div class="space-y-2 text-gray-700 max-h-60 overflow-y-auto pr-2">
-                        <p><strong>Día 1:</strong> Llegada y noche en Bari.</p>
-                        <p><strong>Día 2:</strong> Polignano a Mare, Monopoli y noche en Lecce.</p>
-                        <p><strong>Día 3:</strong> Lecce, Gallipoli y noche en Lecce.</p>
-                        <p><strong>Día 4:</strong> Alberobello, Grotte di Castellana y noche en Matera.</p>
-                        <p><strong>Día 5:</strong> Matera, pueblo fantasma de Craco y noche en Matera.</p>
-                        <p><strong>Día 6-7:</strong> Tropea, cruce a Sicilia y noches en Taormina.</p>
-                        <p><strong>Día 8:</strong> Siracusa, Ortigia y noche en Agrigento.</p>
-                        <p><strong>Día 9:</strong> Valle de los Templos, Erice y noche en Palermo.</p>
-                        <p><strong>Día 10:</strong> Palermo y ferry nocturno a Nápoles.</p>
-                        <p><strong>Día 11:</strong> Capri, Sorrento, Amalfi y noche en Salerno.</p>
-                        <p><strong>Día 12:</strong> Día libre en Salerno.</p>
-                        <p><strong>Día 13:</strong> Pompeya y traslado a Roma.</p>
-                        <p><strong>Día 14-15:</strong> Días en Roma y traslado al aeropuerto.</p>
-                    </div>
-                    <div class="mt-auto">
-                         <a href="#contacto" id="consultar-grupal-btn" class="inline-block mt-6 px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
-                    </div>
-                </div>
-            </div>
+    <main>
+        <section class="hero-section text-white min-h-[60vh] flex flex-col justify-center items-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-center mb-4 text-shadow-lg">Descubre Italia</h1>
+            <p class="text-xl md:text-2xl text-center">Un viaje por el corazón del arte, la historia y el sabor.</p>
         </section>
 
-        <section id="personalizados" class="my-16 section-bg p-8 md:p-12 rounded-lg fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Viajes a Medida</h2>
-            <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Diseñamos la aventura de tus sueños. Tú eliges el destino, nosotros nos encargamos de la magia. Aquí un ejemplo de lo que podemos crear.</p>
-            <div class="bg-white rounded-lg shadow-2xl overflow-hidden">
-                <div class="p-6 md:p-10">
-                     <h3 class="text-3xl font-bold mb-4 text-center text-green-700">Ejemplo: El Sueño de Marta y José</h3>
-                     <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">
-                        Marta y José querían un viaje que combinara la historia clásica con el encanto del norte. Creamos para ellos una ruta única que les permitió vivir lo mejor de ambos mundos, con la comodidad de los trenes de alta velocidad y estancias en hoteles con encanto. Haz clic en cada destino para ver sus maravillas.
-                    </p>
-                    <div id="destinations-container" class="flex flex-wrap justify-center items-start gap-4 md:gap-6 mb-8">
-                        <!-- Círculos de destinos -->
+        <div class="container mx-auto px-4 sm:px-6 py-16">
+            <section id="paquetes" class="my-16 fade-in-section">
+                <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
+                <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Únete a nuestras aventuras cuidadosamente diseñadas y vive una experiencia inolvidable en la mejor compañía.</p>
+                
+                <div class="bg-white rounded-lg shadow-2xl overflow-hidden md:flex">
+                    <div class="md:w-2/5">
+                        <img id="grupal-image" src="assets/2 polignano a mare.jpeg" alt="Costa de Polignano a Mare" class="w-full h-full object-cover">
                     </div>
-                    <div id="city-info-card" class="hidden opacity-0 transform -translate-y-4 max-w-3xl mx-auto">
-                        <!-- Información de la ciudad -->
+                    <div class="md:w-3/5 p-6 md:p-8 flex flex-col">
+                        <h3 class="text-3xl font-bold mb-2 text-red-700">El Alma del Sur de Italia</h3>
+                        <p class="text-lg font-semibold text-gray-700 mb-4">Mayo 2026 (14 Días / 13 Noches)</p>
+                        <p class="text-gray-600 mb-6 leading-relaxed flex-grow">
+                            Sumérgete en el alma vibrante del "Sur de Italia", donde cada rincón te espera con un encanto único. Con la coordinación de quienes vivieron sus calles y la guía de expertos locales, descubrirás una experiencia auténtica.
+                        </p>
+                         <div class="space-y-2 text-gray-700 max-h-60 overflow-y-auto pr-2">
+                            <p><strong>Día 1:</strong> Llegada y noche en Bari.</p>
+                            <p><strong>Día 2:</strong> Polignano a Mare, Monopoli y noche en Lecce.</p>
+                            <p><strong>Día 3:</strong> Lecce, Gallipoli y noche en Lecce.</p>
+                            <p><strong>Día 4:</strong> Alberobello, Grotte di Castellana y noche en Matera.</p>
+                            <p><strong>Día 5:</strong> Matera, pueblo fantasma de Craco y noche en Matera.</p>
+                            <p><strong>Día 6-7:</strong> Tropea, cruce a Sicilia y noches en Taormina.</p>
+                            <p><strong>Día 8:</strong> Siracusa, Ortigia y noche en Agrigento.</p>
+                            <p><strong>Día 9:</strong> Valle de los Templos, Erice y noche en Palermo.</p>
+                            <p><strong>Día 10:</strong> Palermo y ferry nocturno a Nápoles.</p>
+                            <p><strong>Día 11:</strong> Capri, Sorrento, Amalfi y noche en Salerno.</p>
+                            <p><strong>Día 12:</strong> Día libre en Salerno.</p>
+                            <p><strong>Día 13:</strong> Pompeya y traslado a Roma.</p>
+                            <p><strong>Día 14-15:</strong> Días en Roma y traslado al aeropuerto.</p>
+                        </div>
+                        <div class="mt-auto">
+                             <a href="#contacto" id="consultar-grupal-btn" class="inline-block mt-6 px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
+                        </div>
                     </div>
-                     <div class="text-center mt-10">
-                        <a href="#contacto" id="consultar-personalizado-btn" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
+                </div>
+            </section>
+
+            <section id="personalizados" class="my-16 section-bg p-8 md:p-12 rounded-lg fade-in-section">
+                <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Viajes a Medida</h2>
+                <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Diseñamos la aventura de tus sueños. Tú eliges el destino, nosotros nos encargamos de la magia. Aquí un ejemplo de lo que podemos crear.</p>
+                <div class="bg-white rounded-lg shadow-2xl overflow-hidden">
+                    <div class="p-6 md:p-10">
+                         <h3 class="text-3xl font-bold mb-4 text-center text-green-700">Ejemplo: El Sueño de Marta y José</h3>
+                         <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">
+                            Marta y José querían un viaje que combinara la historia clásica con el encanto del norte. Creamos para ellos una ruta única que les permitió vivir lo mejor de ambos mundos, con la comodidad de los trenes de alta velocidad y estancias en hoteles con encanto. Haz clic en cada destino para ver sus maravillas.
+                        </p>
+                        <div id="destinations-container" class="flex flex-wrap justify-center items-start gap-4 md:gap-6 mb-8">
+                        </div>
+                        <div id="city-info-card" class="hidden opacity-0 transform -translate-y-4 max-w-3xl mx-auto">
+                        </div>
+                         <div class="text-center mt-10">
+                            <a href="#contacto" id="consultar-personalizado-btn" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Diseña tu propio viaje</a>
+                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="my-16 fade-in-section">
+                <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Contacta con Nosotros</h2>
+                 <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl text-center">
+                     <div id="download-container" class="hidden text-center mb-8">
+                         <a href="itinerario-sur-italia.pdf" download="Itinerario-Sur-Italia.pdf" class="inline-flex items-center justify-center w-full max-w-md mx-auto px-6 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
+                            <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Descargar Itinerario "El Alma del Sur de Italia"
+                        </a>
                      </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="my-16 fade-in-section">
-            <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">Contacta con Nosotros</h2>
-             <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl text-center">
-                 <div id="download-container" class="hidden text-center mb-8">
-                     <a href="itinerario-sur-italia.pdf" download="Itinerario-Sur-Italia.pdf" class="inline-flex items-center justify-center w-full max-w-md mx-auto px-6 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Descargar Itinerario "El Alma del Sur de Italia"
-                    </a>
+                     <p class="text-lg text-gray-600 mb-8">¿Listo para tu aventura italiana? Haz clic en el botón para contarnos sobre el viaje de tus sueños y nos pondremos en contacto a la brevedad.</p>
+                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7kgoep9JLFQRhX4P1-y2jMH251Q1RvsJR6mz5igr_B6kIdg/viewform" target="_blank" rel="noopener noreferrer" class="inline-block w-full max-w-xs mx-auto btn btn-primary text-lg transition-transform transform hover:scale-105">
+                        ¡Comienza tu consulta aquí!
+                     </a>
                  </div>
-                 <p class="text-lg text-gray-600 mb-8">¿Listo para tu aventura italiana? Haz clic en el botón para contarnos sobre el viaje de tus sueños y nos pondremos en contacto a la brevedad.</p>
-                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSe7kgoep9JLFQRhX4P1-y2jMH251Q1RvsJR6mz5igr_B6kIdg/viewform" target="_blank" rel="noopener noreferrer" class="inline-block w-full max-w-xs mx-auto btn btn-primary text-lg transition-transform transform hover:scale-105">
-                    ¡Comienza tu consulta aquí!
-                 </a>
-             </div>
-        </section>
-
+            </section>
+        </div>
     </main>
 
     <!-- Pie de Página -->
     <footer id="page-footer" class="bg-gray-800 text-white mt-16">
         <div class="container mx-auto px-6 py-8 text-center">
+            <!-- SECCIÓN DE ICONOS SOCIALES ACTUALIZADA -->
+            <div class="flex justify-center space-x-8 mb-6">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/agustinarneodo?igsh=MXh2ZTd4NmV3Zzg4ag==" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.04.002-4.55.018-6.138.09-1.58.072-2.676.346-3.62.723a4.75 4.75 0 00-1.72 1.72c-.377.944-.65 2.04-.723 3.62C.018 7.765 0 8.275 0 12.315s.018 4.55.09 6.138c.072 1.58.346 2.676.723 3.62a4.75 4.75 0 001.72 1.72c.944.377 2.04.65 3.62.723 1.588.072 2.098.09 6.138.09s4.55-.018 6.138-.09c1.58-.072 2.676-.346 3.62-.723a4.75 4.75 0 001.72-1.72c.377-.944.65-2.04.723-3.62.072-1.588.09-2.098.09-6.138s-.018-4.55-.09-6.138c-.072-1.58-.346-2.676-.723-3.62a4.75 4.75 0 00-1.72-1.72c-.944-.377-2.04-.65-3.62-.723C16.865 2.018 16.355 2 12.315 2zM8.27 7.425a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zm2.915 2.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5zm-5.25 3.75a5.25 5.25 0 1110.5 0 5.25 5.25 0 01-10.5 0z" clip-rule="evenodd" /></svg>
+                    <p>Instagram</p>
+                </a>
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/share/18zLMhA1hr/" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    <p>Facebook</p>
+                </a>
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5492215428806" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.25 12.1a1.12 1.12 0 01-1.12-1.12c0-.62.5-1.12 1.12-1.12s1.12.5 1.12 1.12c0 .62-.5 1.12-1.12 1.12zm-4.5 0a1.12 1.12 0 01-1.12-1.12c0-.62.5-1.12 1.12-1.12s1.12.5 1.12 1.12c0 .62-.5 1.12-1.12 1.12zm-4.5 0a1.12 1.12 0 01-1.12-1.12c0-.62.5-1.12 1.12-1.12s1.12.5 1.12 1.12c0 .62-.5 1.12-1.12 1.12z" /></svg>
+                    <p>WhatsApp</p>
+                </a>
+            </div>
             <p>&copy; 2025 Bell'Italia. Un viaje inolvidable te espera.</p>
         </div>
     </footer>
 
-    <!-- NUEVO ELEMENTO: Botón "Volver Arriba" -->
+    <!-- Botón "Volver Arriba" -->
     <button id="back-to-top-btn" title="Volver arriba">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
@@ -283,50 +317,18 @@
     </button>
 
 
-    <!-- Bloque de JavaScript para la lógica de la página -->
+    <!-- Scripts de la página -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const cityData = {
-                roma: {
-                    title: "Roma, la Ciudad Eterna",
-                    image: "assets/3 fontana di trevi.jpeg",
-                    description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana."
-                },
-                venosa: {
-                    title: "Venosa, Cuna de Horacio",
-                    image: "assets/4 venosa.jpeg",
-                    description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero."
-                },
-                sorrento: {
-                    title: "Sorrento y la Costa Amalfitana",
-                    image: "assets/5 costa amalfitana.jpeg",
-                    description: "<strong>Encantos:</strong> La puerta de entrada a la Costa Amalfitana. Disfruta de sus vistas al Vesubio y el Golfo de Nápoles. Desde aquí, explora Positano, Amalfi y la isla de Capri.<br><strong>Sabores:</strong> El aroma de los limones es el protagonista. Prueba el limoncello, la delizia al limone y los gnocchi alla sorrentina."
-                },
-                florencia: {
-                    title: "Florencia, Cuna del Arte",
-                    image: "assets/6 Florencia.jpeg",
-                    description: "<strong>Encantos:</strong> Sumérgete en el Renacimiento en la Galería Uffizi y la Galería de la Academia. Maravíllate con el Duomo de Brunelleschi y cruza el icónico Ponte Vecchio.<br><strong>Sabores:</strong> No te puedes perder una Bistecca alla Fiorentina, la sopa ribollita o un panino al lampredotto para los más aventureros."
-                },
-                milan: {
-                    title: "Milán, Capital de la Moda",
-                    image: "assets/7 milan.jpeg",
-                    description: "<strong>Encantos:</strong> Visita el majestuoso Duomo gótico, la lujosa Galería Vittorio Emanuele II y el Teatro alla Scala. Descubre el arte contemporáneo en el barrio de Brera.<br><strong>Sabores:</strong> El risotto alla milanese con azafrán y la cotoletta alla milanese son platos obligatorios. Disfruta de un aperitivo al atardecer."
-                },
-                capri: {
-                    title: "Capri, la Isla del Glamour",
-                    image: "assets/10 sorrento.jpeg",
-                    description: "<strong>Encantos:</strong> Navega por los Faraglioni, visita la Gruta Azul y pasea por sus exclusivas boutiques. Sube en funicular a la Piazzetta para disfrutar de vistas espectaculares.<br><strong>Sabores:</strong> Prueba la ensalada caprese con los tomates más frescos y la mozzarella de búfala, y de postre, la Torta Caprese de chocolate y almendras."
-                },
-                pisa: {
-                    title: "Pisa y su Torre Inclinada",
-                    image: "assets/8 pisa.jpeg",
-                    description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno."
-                },
-                lago_di_como: {
-                    title: "Lago di Como, Lujo y Naturaleza",
-                    image: "assets/9 lago di como.jpeg",
-                    description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas."
-                }
+                roma: { title: "Roma, la Ciudad Eterna", image: "assets/3 fontana di trevi.jpeg", description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana." },
+                venosa: { title: "Venosa, Cuna de Horacio", image: "assets/4 venosa.jpeg", description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero." },
+                sorrento: { title: "Sorrento y la Costa Amalfitana", image: "assets/5 costa amalfitana.jpeg", description: "<strong>Encantos:</strong> La puerta de entrada a la Costa Amalfitana. Disfruta de sus vistas al Vesubio y el Golfo de Nápoles. Desde aquí, explora Positano, Amalfi y la isla de Capri.<br><strong>Sabores:</strong> El aroma de los limones es el protagonista. Prueba el limoncello, la delizia al limone y los gnocchi alla sorrentina." },
+                florencia: { title: "Florencia, Cuna del Arte", image: "assets/6 Florencia.jpeg", description: "<strong>Encantos:</strong> Sumérgete en el Renacimiento en la Galería Uffizi y la Galería de la Academia. Maravíllate con el Duomo de Brunelleschi y cruza el icónico Ponte Vecchio.<br><strong>Sabores:</strong> No te puedes perder una Bistecca alla Fiorentina, la sopa ribollita o un panino al lampredotto para los más aventureros." },
+                milan: { title: "Milán, Capital de la Moda", image: "assets/7 milan.jpeg", description: "<strong>Encantos:</strong> Visita el majestuoso Duomo gótico, la lujosa Galería Vittorio Emanuele II y el Teatro alla Scala. Descubre el arte contemporáneo en el barrio de Brera.<br><strong>Sabores:</strong> El risotto alla milanese con azafrán y la cotoletta alla milanese son platos obligatorios. Disfruta de un aperitivo al atardecer." },
+                capri: { title: "Capri, la Isla del Glamour", image: "assets/10 sorrento.jpeg", description: "<strong>Encantos:</strong> Navega por los Faraglioni, visita la Gruta Azul y pasea por sus exclusivas boutiques. Sube en funicular a la Piazzetta para disfrutar de vistas espectaculares.<br><strong>Sabores:</strong> Prueba la ensalada caprese con los tomates más frescos y la mozzarella de búfala, y de postre, la Torta Caprese de chocolate y almendras." },
+                pisa: { title: "Pisa y su Torre Inclinada", image: "assets/8 pisa.jpeg", description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno." },
+                lago_di_como: { title: "Lago di Como, Lujo y Naturaleza", image: "assets/9 lago di como.jpeg", description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas." }
             };
             
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -337,72 +339,31 @@
             const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
             const navLinksToContact = document.querySelectorAll('a[href="#contacto"]:not(#consultar-grupal-btn)');
 
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-            
-            if (consultarGrupalBtn) {
-                consultarGrupalBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (downloadContainer) {
-                        downloadContainer.classList.remove('hidden');
-                    }
-                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
-                });
-            }
-
-            navLinksToContact.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (downloadContainer) {
-                        downloadContainer.classList.add('hidden');
-                    }
-                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
-                });
-            });
+            mobileMenuButton.addEventListener('click', function() { mobileMenu.classList.toggle('hidden'); });
+            document.querySelectorAll('#mobile-menu a').forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
+            if (consultarGrupalBtn) { consultarGrupalBtn.addEventListener('click', (e) => { e.preventDefault(); if (downloadContainer) { downloadContainer.classList.remove('hidden'); } document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' }); }); }
+            navLinksToContact.forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); if (downloadContainer) { downloadContainer.classList.add('hidden'); } document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' }); }); });
 
             const cityKeys = ['roma', 'venosa', 'sorrento', 'florencia', 'milan', 'capri', 'pisa', 'lago_di_como'];
-
             cityKeys.forEach(key => {
                 const city = cityData[key];
                 const circleContainer = document.createElement('div');
                 circleContainer.className = 'text-center';
-                
                 const circle = document.createElement('div');
                 circle.className = 'destination-circle mx-auto';
                 circle.style.backgroundImage = `url('${city.image}')`;
                 circle.dataset.city = key;
-
                 const name = document.createElement('p');
                 name.className = 'mt-2 font-semibold';
                 name.textContent = city.title.split(',')[0]; 
-
                 circleContainer.appendChild(circle);
                 circleContainer.appendChild(name);
                 destinationsContainer.appendChild(circleContainer);
-
                 circle.addEventListener('click', () => {
                     destinationsContainer.querySelectorAll('.destination-circle').forEach(c => c.classList.remove('active'));
                     circle.classList.add('active');
-
-                    cityInfoCard.innerHTML = `
-                        <div class="bg-gray-200 p-6 rounded-lg shadow-inner flex flex-col md:flex-row gap-6 items-center relative">
-                             <button id="close-card-btn" class="absolute top-2 right-2 text-3xl text-gray-500 hover:text-black leading-none">&times;</button>
-                             <img src="${city.image}" class="w-full md:w-1/3 h-48 object-cover rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/000000?text=Imagen+no+disponible';">
-                             <div class="md:w-2/3">
-                                <h4 class="text-2xl font-bold mb-3 text-gray-800">${city.title}</h4>
-                                <p class="text-sm md:text-base text-gray-700 leading-relaxed">${city.description}</p>
-                             </div>
-                        </div>
-                    `;
+                    cityInfoCard.innerHTML = `<div class="bg-gray-200 p-6 rounded-lg shadow-inner flex flex-col md:flex-row gap-6 items-center relative"><button id="close-card-btn" class="absolute top-2 right-2 text-3xl text-gray-500 hover:text-black leading-none">&times;</button><img src="${city.image}" class="w-full md:w-1/3 h-48 object-cover rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/000000?text=Imagen+no+disponible';"><div class="md:w-2/3"><h4 class="text-2xl font-bold mb-3 text-gray-800">${city.title}</h4><p class="text-sm md:text-base text-gray-700 leading-relaxed">${city.description}</p></div></div>`;
                     cityInfoCard.classList.remove('hidden', 'opacity-0', '-translate-y-4');
-                    
                     document.getElementById('close-card-btn').addEventListener('click', () => {
                         cityInfoCard.classList.add('opacity-0', '-translate-y-4');
                         setTimeout(() => cityInfoCard.classList.add('hidden'), 500);
@@ -413,52 +374,24 @@
         });
     </script>
 
-    <!-- SCRIPT PARA ANIMACIONES -->
+    <!-- Scripts de Animaciones y Botón Volver Arriba -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Animación de aparición de secciones
             const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } });
             }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in-section').forEach(section => { sectionObserver.observe(section); });
 
-            document.querySelectorAll('.fade-in-section').forEach(section => {
-                sectionObserver.observe(section);
-            });
-
-            // --- NUEVA LÓGICA PARA EL BOTÓN "VOLVER ARRIBA" ---
             const backToTopBtn = document.getElementById('back-to-top-btn');
             const footer = document.getElementById('page-footer');
-
-            // Observador para el pie de página
             const footerObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Muestra el botón cuando el footer es visible
-                        backToTopBtn.classList.add('show');
-                    } else {
-                        // Oculta el botón cuando el footer no es visible
-                        backToTopBtn.classList.remove('show');
-                    }
+                    if (entry.isIntersecting) { backToTopBtn.classList.add('show'); } 
+                    else { backToTopBtn.classList.remove('show'); }
                 });
-            }, { threshold: 0.1 }); // Se activa cuando al menos un 10% del footer es visible
-
-            if (footer) {
-                footerObserver.observe(footer);
-            }
-
-            // Funcionalidad de clic para el botón
-            if (backToTopBtn) {
-                backToTopBtn.addEventListener('click', () => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
+            }, { threshold: 0.1 });
+            if (footer) { footerObserver.observe(footer); }
+            if (backToTopBtn) { backToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
         });
     </script>
 
