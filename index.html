@@ -26,7 +26,7 @@
             font-family: 'Dancing Script', cursive;
         }
         .hero-section {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/1 roma coliseo.jpeg');
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/1-roma-coliseo.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -250,22 +250,18 @@
     <!-- Contenido Principal -->
     <main>
         <section class="hero-section text-white min-h-[60vh] flex flex-col justify-center items-center">
-            <!-- TÍTULO OPTIMIZADO PARA MÓVIL -->
             <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold text-center mb-4 text-shadow-lg">Descubre Italia</h1>
             <p class="text-xl md:text-2xl text-center">Un viaje por el corazón del arte, la historia y el sabor.</p>
         </section>
 
-        <!-- PADDING OPTIMIZADO PARA MÓVIL -->
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <section id="paquetes" class="my-16 fade-in-section">
-                <!-- TÍTULO OPTIMIZADO PARA MÓVIL -->
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
                 <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Únete a nuestras aventuras cuidadosamente diseñadas y vive una experiencia inolvidable en la mejor compañía.</p>
                 
                 <div class="bg-white rounded-lg shadow-2xl overflow-hidden md:flex">
-                    <!-- IMAGEN CON ALTURA OPTIMIZADA PARA MÓVIL -->
                     <div class="md:w-2/5">
-                        <img id="grupal-image" src="assets/2 polignano a mare.jpeg" alt="Costa de Polignano a Mare" class="w-full h-80 md:h-full object-cover">
+                        <img id="grupal-image" src="assets/2-polignano-a-mare.jpeg" alt="Costa de Polignano a Mare" class="w-full h-80 md:h-full object-cover">
                     </div>
                     <div class="md:w-3/5 p-6 md:p-8 flex flex-col">
                         <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-red-700">El Alma del Sur de Italia</h3>
@@ -400,7 +396,6 @@
             </section>
 
             <section id="personalizados" class="my-16 section-bg p-8 md:p-12 rounded-lg fade-in-section">
-                <!-- TÍTULO OPTIMIZADO PARA MÓVIL -->
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-800">Viajes a Medida</h2>
                 <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Diseñamos la aventura de tus sueños. Tú eliges el destino, nosotros nos encargamos de la magia. Aquí un ejemplo de lo que podemos crear.</p>
                 <div class="bg-white rounded-lg shadow-2xl overflow-hidden">
@@ -421,7 +416,6 @@
             </section>
 
             <section id="contacto" class="my-16 fade-in-section">
-                <!-- TÍTULO OPTIMIZADO PARA MÓVIL -->
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">Hablemos de tu Viaje</h2>
                  <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl text-center">
                      
@@ -481,14 +475,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const cityData = {
-                roma: { title: "Roma, la Ciudad Eterna", image: "assets/3 fontana di trevi.jpeg", description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana." },
-                venosa: { title: "Venosa, Cuna de Horacio", image: "assets/4 venosa.jpeg", description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero." },
-                sorrento: { title: "Sorrento y la Costa Amalfitana", image: "assets/5 costa amalfitana.jpeg", description: "<strong>Encantos:</strong> La puerta de entrada a la Costa Amalfitana. Disfruta de sus vistas al Vesubio y el Golfo de Nápoles. Desde aquí, explora Positano, Amalfi y la isla de Capri.<br><strong>Sabores:</strong> El aroma de los limones es el protagonista. Prueba el limoncello, la delizia al limone y los gnocchi alla sorrentina." },
-                florencia: { title: "Florencia, Cuna del Arte", image: "assets/6 Florencia.jpeg", description: "<strong>Encantos:</strong> Sumérgete en el Renacimiento en la Galería Uffizi y la Galería de la Academia. Maravíllate con el Duomo de Brunelleschi y cruza el icónico Ponte Vecchio.<br><strong>Sabores:</strong> No te puedes perder una Bistecca alla Fiorentina, la sopa ribollita o un panino al lampredotto para los más aventureros." },
-                milan: { title: "Milán, Capital de la Moda", image: "assets/7 milan.jpeg", description: "<strong>Encantos:</strong> Visita el majestuoso Duomo gótico, la lujosa Galería Vittorio Emanuele II y el Teatro alla Scala. Descubre el arte contemporáneo en el barrio de Brera.<br><strong>Sabores:</strong> El risotto alla milanese con azafrán y la cotoletta alla milanese son platos obligatorios. Disfruta de un aperitivo al atardecer." },
-                capri: { title: "Capri, la Isla del Glamour", image: "assets/10 sorrento.jpeg", description: "<strong>Encantos:</strong> Navega por los Faraglioni, visita la Gruta Azul y pasea por sus exclusivas boutiques. Sube en funicular a la Piazzetta para disfrutar de vistas espectaculares.<br><strong>Sabores:</strong> Prueba la ensalada caprese con los tomates más frescos y la mozzarella de búfala, y de postre, la Torta Caprese de chocolate y almendras." },
-                pisa: { title: "Pisa y su Torre Inclinada", image: "assets/8 pisa.jpeg", description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno." },
-                lago_di_como: { title: "Lago di Como, Lujo y Naturaleza", image: "assets/9 lago di como.jpeg", description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas." }
+                roma: { title: "Roma, la Ciudad Eterna", image: "assets/3-fontana-di-trevi.jpeg", description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana." },
+                venosa: { title: "Venosa, Cuna de Horacio", image: "assets/4-venosa.jpeg", description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero." },
+                sorrento: { title: "Sorrento y la Costa Amalfitana", image: "assets/5-costa-amalfitana.jpeg", description: "<strong>Encantos:</strong> La puerta de entrada a la Costa Amalfitana. Disfruta de sus vistas al Vesubio y el Golfo de Nápoles. Desde aquí, explora Positano, Amalfi y la isla de Capri.<br><strong>Sabores:</strong> El aroma de los limones es el protagonista. Prueba el limoncello, la delizia al limone y los gnocchi alla sorrentina." },
+                florencia: { title: "Florencia, Cuna del Arte", image: "assets/6-florencia.jpeg", description: "<strong>Encantos:</strong> Sumérgete en el Renacimiento en la Galería Uffizi y la Galería de la Academia. Maravíllate con el Duomo de Brunelleschi y cruza el icónico Ponte Vecchio.<br><strong>Sabores:</strong> No te puedes perder una Bistecca alla Fiorentina, la sopa ribollita o un panino al lampredotto para los más aventureros." },
+                milan: { title: "Milán, Capital de la Moda", image: "assets/7-milan.jpeg", description: "<strong>Encantos:</strong> Visita el majestuoso Duomo gótico, la lujosa Galería Vittorio Emanuele II y el Teatro alla Scala. Descubre el arte contemporáneo en el barrio de Brera.<br><strong>Sabores:</strong> El risotto alla milanese con azafrán y la cotoletta alla milanese son platos obligatorios. Disfruta de un aperitivo al atardecer." },
+                capri: { title: "Capri, la Isla del Glamour", image: "assets/10-sorrento.jpeg", description: "<strong>Encantos:</strong> Navega por los Faraglioni, visita la Gruta Azul y pasea por sus exclusivas boutiques. Sube en funicular a la Piazzetta para disfrutar de vistas espectaculares.<br><strong>Sabores:</strong> Prueba la ensalada caprese con los tomates más frescos y la mozzarella de búfala, y de postre, la Torta Caprese de chocolate y almendras." },
+                pisa: { title: "Pisa y su Torre Inclinada", image: "assets/8-pisa.jpeg", description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno." },
+                lago_di_como: { title: "Lago di Como, Lujo y Naturaleza", image: "assets/9-lago-di-como.jpeg", description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas." }
             };
             
             const mobileMenuButton = document.getElementById('mobile-menu-button');
