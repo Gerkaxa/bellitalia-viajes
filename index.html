@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bell'Italia - Viajes Inolvidables</title>
-    <!-- Enlace al Favicon -->
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <!-- Enlace al Favicon con el nombre correcto -->
+    <link rel="icon" type="image/png" href="assets/logo-bellitalia.png">
     <!-- Carga de Tailwind CSS para estilos rápidos y responsivos -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Carga de fuentes personalizadas desde Google Fonts -->
@@ -33,12 +33,12 @@
         .section-bg {
             background-color: #f4f1ea;
         }
-        /* --- ESTILO PARA EL FONDO DEL CONTENIDO --- */
+        /* --- ESTILO DEL FONDO CORREGIDO --- */
         .content-background {
-            background-image: url('assets/11-fondodepagina.jpg');
+            background-image: url('assets/11-fondodepagina.jpeg'); /* CORREGIDO a .jpeg */
             background-size: cover;
             background-position: center top;
-            background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
+            background-attachment: fixed;
         }
         .btn {
             padding: 0.75rem 1.5rem;
@@ -251,7 +251,6 @@
             <p class="text-xl md:text-2xl text-center">Un viaje por el corazón del arte, la historia y el sabor.</p>
         </section>
 
-        <!-- A ESTE DIV SE LE APLICÓ EL FONDO -->
         <div class="content-background">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <section id="paquetes" class="my-16 fade-in-section">
