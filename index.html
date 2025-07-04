@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bell'Italia - Viajes Inolvidables</title>
-    <!-- Enlace al Favicon con el nombre correcto -->
+    <title>Fliarneodo - Asesores de Viajes</title>
+    <!-- Enlace al Favicon -->
     <link rel="icon" type="image/png" href="assets/logo-bellitalia.png">
     <!-- Carga de Tailwind CSS para estilos rápidos y responsivos -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,9 +33,8 @@
         .section-bg {
             background-color: #f4f1ea;
         }
-        /* --- ESTILO DEL FONDO CORREGIDO --- */
         .content-background {
-            background-image: url('assets/11-fondodepagina.jpeg'); /* CORREGIDO a .jpeg */
+            background-image: url('assets/11-fondodepagina.jpeg');
             background-size: cover;
             background-position: center top;
             background-attachment: fixed;
@@ -225,7 +224,11 @@
     <!-- Encabezado y Navegación -->
     <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-4xl font-bold text-green-700 nav-link logo">Bell'Italia</a>
+            <!-- CAMBIO DE MARCA -->
+            <div>
+                <a href="#" class="text-4xl font-bold text-green-700 nav-link logo">Fliarneodo</a>
+                <p class="text-sm text-gray-500 -mt-2 ml-1">Asesores de Viajes</p>
+            </div>
             <div class="hidden md:flex space-x-8">
                 <a href="#paquetes" class="text-gray-700 hover:text-green-700 nav-link text-lg nav-link-effect">Salidas Grupales</a>
                 <a href="#personalizados" class="text-gray-700 hover:text-green-700 nav-link text-lg nav-link-effect">Viajes a Medida</a>
@@ -298,7 +301,8 @@
                              <p class="text-gray-600 text-center max-w-3xl mx-auto leading-relaxed mb-10">
                                 Marta y José querían un viaje que combinara la historia clásica con el encanto del norte. Creamos para ellos una ruta única que les permitió vivir lo mejor de ambos mundos, con la comodidad de los trenes de alta velocidad y estancias en hoteles con encanto. Haz clic en cada destino para ver sus maravillas.
                             </p>
-                            <div id="destinations-container" class="flex flex-wrap justify-center items-start gap-4 md:gap-6 mb-8">
+                            <!-- CORRECCIÓN MÓVIL: Clases ajustadas para mejor alineación en celulares -->
+                            <div id="destinations-container" class="grid grid-cols-2 sm:grid-cols-4 justify-center items-start gap-4 md:gap-6 mb-8">
                             </div>
                             <div id="city-info-card" class="hidden opacity-0 transform -translate-y-4 max-w-3xl mx-auto">
                             </div>
@@ -353,7 +357,7 @@
     <!-- Pie de Página Simplificado -->
     <footer id="page-footer" class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-4 text-center text-gray-400">
-            <p>&copy; 2025 Bell'Italia. Un viaje inolvidable te espera.</p>
+            <p>&copy; 2025 Fliarneodo. Un viaje inolvidable te espera.</p>
         </div>
     </footer>
 
