@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bell'Italia - Viajes Inolvidables</title>
+    <!-- Enlace al Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    <!-- Carga de Tailwind CSS para estilos rápidos y responsivos -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de fuentes personalizadas desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
     <style>
         body {
             font-family: 'Lora', serif;
@@ -29,7 +33,7 @@
         .section-bg {
             background-color: #f4f1ea;
         }
-        /* --- NUEVO ESTILO PARA EL FONDO DEL CONTENIDO --- */
+        /* --- ESTILO PARA EL FONDO DEL CONTENIDO --- */
         .content-background {
             background-image: url('assets/11-fondodepagina.jpg');
             background-size: cover;
@@ -218,6 +222,7 @@
 </head>
 <body class="antialiased">
 
+    <!-- Encabezado y Navegación -->
     <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-4xl font-bold text-green-700 nav-link logo">Bell'Italia</a>
@@ -239,12 +244,14 @@
         </div>
     </header>
 
+    <!-- Contenido Principal -->
     <main>
         <section class="hero-section text-white min-h-[60vh] flex flex-col justify-center items-center">
             <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold text-center mb-4 text-shadow-lg">Descubre Italia</h1>
             <p class="text-xl md:text-2xl text-center">Un viaje por el corazón del arte, la historia y el sabor.</p>
         </section>
 
+        <!-- A ESTE DIV SE LE APLICÓ EL FONDO -->
         <div class="content-background">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <section id="paquetes" class="my-16 fade-in-section">
@@ -344,12 +351,14 @@
             </div>
     </main>
 
+    <!-- Pie de Página Simplificado -->
     <footer id="page-footer" class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-4 text-center text-gray-400">
             <p>&copy; 2025 Bell'Italia. Un viaje inolvidable te espera.</p>
         </div>
     </footer>
 
+    <!-- Botón "Volver Arriba" -->
     <button id="back-to-top-btn" title="Volver arriba">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
@@ -357,6 +366,7 @@
     </button>
 
 
+    <!-- Scripts de la página -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const cityData = {
@@ -467,6 +477,7 @@
         });
     </script>
 
+    <!-- Scripts de Animaciones, Botón Volver Arriba y Acordeón -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const sectionObserver = new IntersectionObserver((entries) => {
