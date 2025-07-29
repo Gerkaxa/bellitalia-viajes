@@ -196,7 +196,7 @@
                                         </ul>
                                     </div>
                                     <div class="mt-6">
-                                        <a href="#contacto" data-itinerary-file="itinerario-sur-italia.pdf" class="contact-trip-btn w-full text-center inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
+                                        <a href="#contacto" data-itinerary-file="itinerario-sur-italia.pdf" data-trip-name="Sur" class="contact-trip-btn w-full text-center inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
                                     </div>
                                 </div>
                             </div>
@@ -255,7 +255,7 @@
                                         </ul>
                                     </div>
                                     <div class="mt-6">
-                                        <a href="#contacto" data-itinerary-file="itinerario-norte-italia.pdf" class="contact-trip-btn w-full text-center inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Solicitar más información</a>
+                                        <a href="#contacto" data-itinerary-file="itinerario-norte-italia.pdf" data-trip-name="Norte" class="contact-trip-btn w-full text-center inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Solicitar más información</a>
                                     </div>
                                 </div>
                             </div>
@@ -383,8 +383,15 @@
                     button.addEventListener('click', (e) => {
                         e.preventDefault();
                         const itineraryFile = e.target.dataset.itineraryFile;
+                        const tripName = e.target.dataset.tripName;
+
                         downloadLink.href = itineraryFile;
                         downloadLink.setAttribute('download', itineraryFile.split('/').pop());
+                        
+                        if (downloadText && tripName) {
+                            downloadText.textContent = `Descargar itinerario completo del ${tripName}`;
+                        }
+
                         downloadContainer.classList.remove('hidden');
                         document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
                     });
@@ -401,12 +408,8 @@
                 downloadLink.addEventListener('click', () => {
                     if (!downloadLink.classList.contains('downloaded')) {
                         downloadConfirmation.classList.remove('hidden');
-                        downloadText.textContent = 'Descargar nuevamente';
-                        downloadLink.classList.add('downloaded');
                         setTimeout(() => {
                            downloadConfirmation.classList.add('hidden');
-                           downloadLink.classList.remove('downloaded');
-                           downloadText.textContent = 'Descargar Itinerario Completo';
                         }, 4000);
                     }
                 });
@@ -449,12 +452,12 @@
             // --- LÓGICA DE SALIDAS GRUPALES (TARJETAS Y ACORDEÓN) ---
             function setupGroupTrips() {
                 const tripButtons = document.querySelectorAll('.show-trip-btn');
-                const tripDetailsSections = document.querySelectorAll('.trip-details');
 
                 const initAccordions = (container) => {
                     const accordionItems = container.querySelectorAll('.accordion-item');
                     accordionItems.forEach(item => {
                         const header = item.querySelector('.accordion-header');
+                        // Clona y reemplaza el header para limpiar listeners antiguos y evitar duplicados.
                         const newHeader = header.cloneNode(true);
                         header.parentNode.replaceChild(newHeader, header);
                         
@@ -462,11 +465,13 @@
                             const content = item.querySelector('.accordion-content');
                             const isActive = item.classList.contains('active');
                             
+                            // Cierra cualquier otro item abierto dentro del mismo itinerario.
                             container.querySelectorAll('.accordion-item').forEach(otherItem => {
                                 otherItem.classList.remove('active');
                                 otherItem.querySelector('.accordion-content').style.maxHeight = 0;
                             });
 
+                            // Si el item clickeado no estaba activo, lo abre.
                             if (!isActive) {
                                 item.classList.add('active');
                                 content.style.maxHeight = content.scrollHeight + "px";
@@ -481,22 +486,26 @@
                         const targetDetails = document.getElementById(`trip-details-${tripId}`);
                         const currentlyVisible = document.querySelector('.trip-details.visible');
 
-                        if (currentlyVisible && currentlyVisible !== targetDetails) {
-                            // Si hay otra sección abierta, la cierra
+                        // Si se hace clic en el itinerario ya abierto, se cierra.
+                        if (targetDetails === currentlyVisible) {
+                            targetDetails.classList.remove('visible');
+                            return;
+                        }
+
+                        // Si hay otro itinerario abierto, se cierra primero.
+                        if (currentlyVisible) {
                             currentlyVisible.classList.remove('visible');
                         }
+                        
+                        // Se abre el nuevo itinerario.
+                        targetDetails.classList.add('visible');
+                        initAccordions(targetDetails);
 
-                        // Alterna la visibilidad de la sección objetivo
-                        targetDetails.classList.toggle('visible');
-
-                        if (targetDetails.classList.contains('visible')) {
-                            // Si la sección se acaba de hacer visible
-                            initAccordions(targetDetails);
-                            // Espera a que la animación de CSS comience para desplazarse
-                            setTimeout(() => {
-                                targetDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }, 250); // Un breve retraso para un desplazamiento más suave
-                        }
+                        // Se espera un momento para que la animación de cierre del otro elemento
+                        // no afecte el cálculo de la posición del nuevo, y luego se desplaza.
+                        setTimeout(() => {
+                            targetDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 350); // Un delay ajustado para el mejor efecto visual.
                     });
                 });
             }
