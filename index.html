@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bell'Italia - Viajes Inolvidables</title>
-    <!-- Enlace al Favicon -->
     <link rel="icon" type="image/png" href="assets/logo-bellitalia.png">
-    <!-- Carga de Tailwind CSS para estilos rápidos y responsivos -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Carga de fuentes personalizadas desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <!-- Estilos personalizados -->
     <style>
         body { font-family: 'Lora', serif; background-color: #fcfbf8; color: #3d405b; }
         h1, h2, h3, .nav-link { font-family: 'Playfair Display', serif; }
@@ -67,7 +63,6 @@
 </head>
 <body class="antialiased">
 
-    <!-- Encabezado y Navegación -->
     <header class="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div>
@@ -95,7 +90,6 @@
         </div>
     </header>
 
-    <!-- Contenido Principal -->
     <main>
         <section class="hero-section text-white min-h-[60vh] flex flex-col justify-center items-center text-center px-4">
             <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 text-shadow-lg">Descubre Italia</h1>
@@ -109,13 +103,11 @@
         <div class="content-background">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 
-                <!-- ===== SECCIÓN DE SALIDAS GRUPALES ===== -->
                 <section id="paquetes" class="my-16 fade-in-section">
                     <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
                     <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Explora Italia con nuestros itinerarios exclusivos. Elige tu aventura y prepárate para un viaje inolvidable.</p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <!-- Tarjeta Viaje al Sur -->
                         <div class="trip-card bg-white rounded-lg shadow-lg overflow-hidden">
                             <img src="assets/2-polignano-a-mare.jpeg" alt="Paisaje del sur de Italia" class="w-full h-64 object-cover">
                             <div class="p-6 text-center">
@@ -125,7 +117,6 @@
                             </div>
                         </div>
 
-                        <!-- Tarjeta Viaje al Norte -->
                         <div class="trip-card bg-white rounded-lg shadow-lg overflow-hidden">
                             <img src="assets/12-portadanorte.jpeg" alt="Paisaje del norte de Italia" class="w-full h-64 object-cover">
                             <div class="p-6 text-center">
@@ -137,7 +128,6 @@
                     </div>
                 </section>
 
-                <!-- ===== DETALLES DEL VIAJE AL SUR (OCULTO) ===== -->
                 <section id="trip-details-sur" class="trip-details">
                     <div class="bg-white rounded-lg shadow-2xl overflow-hidden p-6 md:p-8">
                         <div class="md:flex md:gap-8 items-center">
@@ -204,7 +194,6 @@
                     </div>
                 </section>
 
-                <!-- ===== DETALLES DEL VIAJE AL NORTE (OCULTO) ===== -->
                 <section id="trip-details-norte" class="trip-details">
                     <div class="bg-white rounded-lg shadow-2xl overflow-hidden p-6 md:p-8">
                         <div class="md:flex md:gap-8 items-center">
@@ -324,21 +313,18 @@
             </div>
     </main>
 
-    <!-- Pie de Página Simplificado -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-4 text-center text-gray-400">
             <p>© 2025 Fliarneodo. Un viaje inolvidable te espera.</p>
         </div>
     </footer>
 
-    <!-- Botón "Volver Arriba" -->
     <button id="back-to-top-btn" title="Volver arriba">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
         </svg>
     </button>
     
-    <!-- Modal de Video -->
     <div id="video-modal" class="video-modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 hidden opacity-0">
         <div class="video-modal-content bg-black rounded-lg shadow-2xl w-full max-w-3xl relative opacity-0 transform scale-95">
             <button id="close-video-modal-btn" class="absolute -top-3 -right-3 z-10 bg-white rounded-full p-1 text-gray-800 hover:bg-gray-200">
@@ -350,7 +336,6 @@
         </div>
     </div>
 
-    <!-- Scripts de la página -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // --- DATOS Y ELEMENTOS DEL DOM ---
@@ -480,6 +465,7 @@
                     });
                 };
 
+                // ===== INICIO DEL BLOQUE MODIFICADO =====
                 tripButtons.forEach(button => {
                     button.addEventListener('click', () => {
                         const tripId = button.dataset.trip;
@@ -492,22 +478,27 @@
                             return;
                         }
 
-                        // Si hay otro itinerario abierto, se cierra primero.
-                        if (currentlyVisible) {
-                            currentlyVisible.classList.remove('visible');
-                        }
-                        
-                        // Se abre el nuevo itinerario.
-                        targetDetails.classList.add('visible');
-                        initAccordions(targetDetails);
-
-                        // Se espera un momento para que la animación de cierre del otro elemento
-                        // no afecte el cálculo de la posición del nuevo, y luego se desplaza.
-                        setTimeout(() => {
+                        // Esta función abre el nuevo itinerario y se desplaza a él.
+                        const openAndScrollToTarget = () => {
+                            targetDetails.classList.add('visible');
+                            initAccordions(targetDetails);
+                            // Se desplaza al inicio del nuevo elemento abierto.
                             targetDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }, 350); // Un delay ajustado para el mejor efecto visual.
+                        };
+
+                        // Si hay otro itinerario abierto...
+                        if (currentlyVisible) {
+                            // ...se agrega un listener que se ejecuta UNA SOLA VEZ cuando la transición de cierre termina.
+                            currentlyVisible.addEventListener('transitionend', openAndScrollToTarget, { once: true });
+                            // Y se inicia la animación de cierre.
+                            currentlyVisible.classList.remove('visible');
+                        } else {
+                            // Si no había nada abierto, simplemente se abre el nuevo y se desplaza.
+                            openAndScrollToTarget();
+                        }
                     });
                 });
+                // ===== FIN DEL BLOQUE MODIFICADO =====
             }
             
             // --- MODAL DE VIDEO ---
