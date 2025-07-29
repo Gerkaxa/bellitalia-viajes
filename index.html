@@ -109,7 +109,7 @@
         <div class="content-background">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 
-                <!-- ===== SECCIÓN DE SALIDAS GRUPALES ACTUALIZADA ===== -->
+                <!-- ===== SECCIÓN DE SALIDAS GRUPALES ===== -->
                 <section id="paquetes" class="my-16 fade-in-section">
                     <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
                     <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Explora Italia con nuestros itinerarios exclusivos. Elige tu aventura y prepárate para un viaje inolvidable.</p>
@@ -127,7 +127,7 @@
 
                         <!-- Tarjeta Viaje al Norte -->
                         <div class="trip-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="assets/milan-catedral.jpeg" alt="Paisaje del norte de Italia" class="w-full h-64 object-cover">
+                            <img src="assets/12-portadanorte.jpeg" alt="Paisaje del norte de Italia" class="w-full h-64 object-cover">
                             <div class="p-6 text-center">
                                 <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-green-700">El Norte de Italia</h3>
                                 <p class="text-gray-600 mb-6">De los lagos alpinos a la elegante Riviera Ligure.</p>
@@ -209,7 +209,7 @@
                     <div class="bg-white rounded-lg shadow-2xl overflow-hidden p-6 md:p-8">
                         <div class="md:flex md:gap-8 items-center">
                             <div class="md:w-1/3 mb-6 md:mb-0">
-                                <img src="assets/milan-catedral.jpeg" alt="Catedral de Milán" class="w-full h-full object-cover rounded-lg shadow-md">
+                                <img src="assets/12-portadanorte.jpeg" alt="Paisaje del norte de Italia" class="w-full h-full object-cover rounded-lg shadow-md">
                             </div>
                             <div class="md:w-2/3 text-center flex flex-col justify-center">
                                 <h3 class="text-2xl sm:text-4xl font-bold mb-2 text-green-700">El Norte de Italia</h3>
@@ -451,12 +451,10 @@
                 const tripButtons = document.querySelectorAll('.show-trip-btn');
                 const tripDetailsSections = document.querySelectorAll('.trip-details');
 
-                // Función para inicializar los acordeones de un contenedor específico
                 const initAccordions = (container) => {
                     const accordionItems = container.querySelectorAll('.accordion-item');
                     accordionItems.forEach(item => {
                         const header = item.querySelector('.accordion-header');
-                        // Remover listeners antiguos para evitar duplicados
                         const newHeader = header.cloneNode(true);
                         header.parentNode.replaceChild(newHeader, header);
                         
@@ -464,13 +462,11 @@
                             const content = item.querySelector('.accordion-content');
                             const isActive = item.classList.contains('active');
                             
-                            // Cerrar todos los demás items en este contenedor
                             container.querySelectorAll('.accordion-item').forEach(otherItem => {
                                 otherItem.classList.remove('active');
                                 otherItem.querySelector('.accordion-content').style.maxHeight = 0;
                             });
 
-                            // Abrir el item clickeado si no estaba activo
                             if (!isActive) {
                                 item.classList.add('active');
                                 content.style.maxHeight = content.scrollHeight + "px";
@@ -483,19 +479,23 @@
                     button.addEventListener('click', () => {
                         const tripId = button.dataset.trip;
                         const targetDetails = document.getElementById(`trip-details-${tripId}`);
+                        const currentlyVisible = document.querySelector('.trip-details.visible');
+
+                        if (currentlyVisible && currentlyVisible !== targetDetails) {
+                            // Si hay otra sección abierta, la cierra
+                            currentlyVisible.classList.remove('visible');
+                        }
+
+                        // Alterna la visibilidad de la sección objetivo
+                        targetDetails.classList.toggle('visible');
 
                         if (targetDetails.classList.contains('visible')) {
-                            // Si ya está visible, lo oculta
-                             targetDetails.classList.remove('visible');
-                        } else {
-                            // Oculta todos los detalles primero
-                            tripDetailsSections.forEach(section => section.classList.remove('visible'));
-                            // Muestra el detalle del viaje seleccionado
-                            targetDetails.classList.add('visible');
-                            // Inicializa sus acordeones
+                            // Si la sección se acaba de hacer visible
                             initAccordions(targetDetails);
-                            // Desplaza la vista hacia el detalle
-                            setTimeout(() => targetDetails.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+                            // Espera a que la animación de CSS comience para desplazarse
+                            setTimeout(() => {
+                                targetDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }, 250); // Un breve retraso para un desplazamiento más suave
                         }
                     });
                 });
