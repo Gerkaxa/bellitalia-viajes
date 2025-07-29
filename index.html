@@ -14,247 +14,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <!-- Estilos personalizados -->
     <style>
-        body {
-            font-family: 'Lora', serif;
-            background-color: #fcfbf8; 
-            color: #3d405b;
-        }
-        h1, h2, h3, .nav-link {
-            font-family: 'Playfair Display', serif;
-        }
-        .logo {
-            font-family: 'Dancing Script', cursive;
-        }
-        .hero-section {
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/1-roma-coliseo.jpeg');
-            background-size: cover;
-            background-position: center;
-        }
-        .section-bg {
-            background-color: #f4f1ea;
-        }
-        .content-background {
-            background-image: url('assets/11-fondodepagina.jpeg');
-            background-size: cover;
-            background-position: center top;
-            background-attachment: fixed;
-        }
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-family: 'Lora', serif;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .btn-primary {
-            background-color: #006400;
-            color: white;
-        }
-        .btn-primary:hover {
-            background-color: white;
-            color: #006400;
-            border-color: #006400;
-        }
-         .btn-secondary {
-            background-color: #c8102e;
-            color: white;
-        }
-        .btn-secondary:hover {
-            background-color: white;
-            color: #c8102e;
-            border-color: #c8102e;
-        }
-        .btn-download {
-            background-color: #1d4ed8;
-            color: white;
-        }
-        .btn-download:hover {
-             background-color: white;
-             color: #1d4ed8;
-             border-color: #1d4ed8;
-        }
-        .btn-video {
-            background-color: rgba(205, 33, 42, 0.2);
-            backdrop-filter: blur(5px);
-            border: 2px solid #CD212A;
-            color: white;
-        }
-        .btn-video:hover {
-            background-color: #CD212A;
-            color: white;
-            border-color: #CD212A;
-        }
-        .text-shadow-lg {
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-        }
-        .destination-circle {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-            border: 4px solid white;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-        .destination-circle:hover, .destination-circle.active {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(0, 100, 0, 0.3);
-            border-color: #006400;
-        }
-        #city-info-card {
-            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-            border-top: 4px solid #006400;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        header {
-            border-bottom: 1px solid #e5e7eb;
-        }
-        section[id] {
-            scroll-margin-top: 100px;
-        }
-        .nav-link-effect {
-            position: relative;
-        }
-        .nav-link-effect::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #006400;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
-        }
-        .nav-link-effect:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        #back-to-top-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #006400;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
-            z-index: 1000;
-        }
-        #back-to-top-btn:hover {
-            background-color: #004d00;
-        }
-        #back-to-top-btn.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: #3d405b;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-        .social-link:hover {
-            transform: scale(1.1);
-            color: #006400;
-        }
-        .social-link p {
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            font-family: 'Lora', serif;
-            font-weight: 600;
-        }
-        .social-link svg {
-            transition: fill 0.3s ease;
-        }
-        .social-link:hover svg {
-            fill: #006400;
-        }
-        .accordion-item {
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .accordion-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0.5rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .accordion-header:hover {
-            background-color: #f9fafb;
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            padding: 0 0.5rem;
-        }
-        .accordion-content p {
-            padding-bottom: 1rem;
-            font-style: italic;
-            color: #4b5563;
-        }
-        .accordion-icon {
-            transition: transform 0.4s ease;
-        }
-        .accordion-item.active .accordion-icon {
-            transform: rotate(45deg);
-        }
-        .video-modal-overlay {
-            transition: opacity 0.3s ease;
-        }
-        .video-modal-content {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        .aspect-video {
-            aspect-ratio: 16 / 9;
-        }
-        /* ===== NUEVOS ESTILOS PARA LAS TARJETAS DE VIAJE ===== */
-        .trip-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .trip-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .trip-details {
-            transition: max-height 0.7s ease-in-out, opacity 0.5s ease-in-out;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-        }
-        .trip-details.visible {
-            max-height: 5000px; /* Un valor alto para permitir que el contenido se expanda */
-            opacity: 1;
-        }
+        body { font-family: 'Lora', serif; background-color: #fcfbf8; color: #3d405b; }
+        h1, h2, h3, .nav-link { font-family: 'Playfair Display', serif; }
+        .logo { font-family: 'Dancing Script', cursive; }
+        .hero-section { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/1-roma-coliseo.jpeg'); background-size: cover; background-position: center; }
+        .content-background { background-image: url('assets/11-fondodepagina.jpeg'); background-size: cover; background-position: center top; background-attachment: fixed; }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-family: 'Lora', serif; font-weight: bold; transition: all 0.3s ease; border: 2px solid transparent; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-primary { background-color: #006400; color: white; }
+        .btn-primary:hover { background-color: white; color: #006400; border-color: #006400; }
+        .btn-secondary { background-color: #c8102e; color: white; }
+        .btn-secondary:hover { background-color: white; color: #c8102e; border-color: #c8102e; }
+        .btn-download { background-color: #1d4ed8; color: white; }
+        .btn-download:hover { background-color: white; color: #1d4ed8; border-color: #1d4ed8; }
+        .btn-video { background-color: rgba(205, 33, 42, 0.2); backdrop-filter: blur(5px); border: 2px solid #CD212A; color: white; }
+        .btn-video:hover { background-color: #CD212A; color: white; border-color: #CD212A; }
+        .text-shadow-lg { text-shadow: 2px 2px 6px rgba(0,0,0,0.7); }
+        .destination-circle { width: 110px; height: 110px; border-radius: 50%; background-size: cover; background-position: center; border: 4px solid white; box-shadow: 0 6px 12px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .destination-circle:hover, .destination-circle.active { transform: scale(1.1); box-shadow: 0 10px 20px rgba(0, 100, 0, 0.3); border-color: #006400; }
+        #city-info-card { transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; border-top: 4px solid #006400; }
+        html { scroll-behavior: smooth; }
+        header { border-bottom: 1px solid #e5e7eb; }
+        section[id] { scroll-margin-top: 100px; }
+        .nav-link-effect { position: relative; }
+        .nav-link-effect::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px; bottom: -4px; left: 0; background-color: #006400; transform-origin: bottom right; transition: transform 0.25s ease-out; }
+        .nav-link-effect:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        #back-to-top-btn { position: fixed; bottom: 20px; right: 20px; background-color: #006400; color: white; border: none; border-radius: 50%; width: 50px; height: 50px; display: none; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s, background-color 0.3s; z-index: 1000; }
+        #back-to-top-btn:hover { background-color: #004d00; }
+        #back-to-top-btn.show { display: flex; opacity: 1; visibility: visible; }
+        .social-link { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #3d405b; transition: transform 0.3s ease, color 0.3s ease; }
+        .social-link:hover { transform: scale(1.1); color: #006400; }
+        .social-link p { font-size: 0.875rem; margin-top: 0.5rem; font-family: 'Lora', serif; font-weight: 600; }
+        .social-link svg { transition: fill 0.3s ease; }
+        .social-link:hover svg { fill: #006400; }
+        .accordion-item { border-bottom: 1px solid #e5e7eb; }
+        .accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0.5rem; cursor: pointer; transition: background-color 0.3s ease; }
+        .accordion-header:hover { background-color: #f9fafb; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; padding: 0 0.5rem; }
+        .accordion-content p { padding-bottom: 1rem; font-style: italic; color: #4b5563; }
+        .accordion-icon { transition: transform 0.4s ease; }
+        .accordion-item.active .accordion-icon { transform: rotate(45deg); }
+        .video-modal-overlay { transition: opacity 0.3s ease; }
+        .video-modal-content { transition: transform 0.3s ease, opacity 0.3s ease; }
+        .aspect-video { aspect-ratio: 16 / 9; }
+        /* ===== ESTILOS PARA LAS TARJETAS DE VIAJE Y DETALLES ===== */
+        .trip-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .trip-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .trip-details { transition: max-height 0.8s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.8s ease-in-out; max-height: 0; opacity: 0; overflow: hidden; margin-top: 0; }
+        .trip-details.visible { max-height: 5000px; /* Valor alto para permitir expansión */ opacity: 1; margin-top: 4rem; }
     </style>
 </head>
 <body class="antialiased">
@@ -301,7 +109,7 @@
         <div class="content-background">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 
-                <!-- ===== NUEVA SECCIÓN DE SALIDAS GRUPALES ===== -->
+                <!-- ===== SECCIÓN DE SALIDAS GRUPALES ACTUALIZADA ===== -->
                 <section id="paquetes" class="my-16 fade-in-section">
                     <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-800">Salidas Grupales</h2>
                     <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Explora Italia con nuestros itinerarios exclusivos. Elige tu aventura y prepárate para un viaje inolvidable.</p>
@@ -319,7 +127,7 @@
 
                         <!-- Tarjeta Viaje al Norte -->
                         <div class="trip-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="assets/milan- catedral.jpeg" alt="Paisaje del norte de Italia" class="w-full h-64 object-cover">
+                            <img src="assets/milan-catedral.jpeg" alt="Paisaje del norte de Italia" class="w-full h-64 object-cover">
                             <div class="p-6 text-center">
                                 <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-green-700">El Norte de Italia</h3>
                                 <p class="text-gray-600 mb-6">De los lagos alpinos a la elegante Riviera Ligure.</p>
@@ -330,7 +138,7 @@
                 </section>
 
                 <!-- ===== DETALLES DEL VIAJE AL SUR (OCULTO) ===== -->
-                <section id="trip-details-sur" class="trip-details my-16">
+                <section id="trip-details-sur" class="trip-details">
                     <div class="bg-white rounded-lg shadow-2xl overflow-hidden p-6 md:p-8">
                         <div class="md:flex md:gap-8 items-center">
                             <div class="md:w-1/3 mb-6 md:mb-0">
@@ -388,7 +196,7 @@
                                         </ul>
                                     </div>
                                     <div class="mt-6">
-                                        <a href="#contacto" class="w-full text-center inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
+                                        <a href="#contacto" data-itinerary-file="itinerario-sur-italia.pdf" class="contact-trip-btn w-full text-center inline-block px-8 py-3 rounded-lg font-bold btn-primary transition-transform transform hover:scale-105">Consultar por este viaje</a>
                                     </div>
                                 </div>
                             </div>
@@ -397,11 +205,11 @@
                 </section>
 
                 <!-- ===== DETALLES DEL VIAJE AL NORTE (OCULTO) ===== -->
-                <section id="trip-details-norte" class="trip-details my-16">
+                <section id="trip-details-norte" class="trip-details">
                     <div class="bg-white rounded-lg shadow-2xl overflow-hidden p-6 md:p-8">
                         <div class="md:flex md:gap-8 items-center">
                             <div class="md:w-1/3 mb-6 md:mb-0">
-                                <img src="assets/milan- catedral.jpeg" alt="Catedral de Milán" class="w-full h-full object-cover rounded-lg shadow-md">
+                                <img src="assets/milan-catedral.jpeg" alt="Catedral de Milán" class="w-full h-full object-cover rounded-lg shadow-md">
                             </div>
                             <div class="md:w-2/3 text-center flex flex-col justify-center">
                                 <h3 class="text-2xl sm:text-4xl font-bold mb-2 text-green-700">El Norte de Italia</h3>
@@ -416,20 +224,20 @@
                             <div class="md:col-span-2">
                                 <h4 class="text-2xl font-bold mb-4 text-gray-800 text-center md:text-left">Un Vistazo al Recorrido</h4>
                                 <div class="accordion-container">
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 1: Milán</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Llegada, traslado y check-in. Visita a la Piazza del Duomo y la Galleria Vittorio Emanuele II. Cena de bienvenida en Brera.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 2: Brescia</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Viaje a Brescia. Exploración del centro histórico, Patrimonio de la Humanidad por la UNESCO, incluyendo el Capitolium y el Teatro Romano.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 3: Lago di Garda</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Excursión al Lago di Garda. Visita a la península de Sirmione, el castillo Rocca Scaligera y las ruinas de las Grutas de Catulo. Por la tarde, Riva del Garda.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 4: Franciacorta</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Día dedicado a la prestigiosa zona vinícola de Franciacorta. Visita y degustación en una de sus famosas "cantine".</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 5: Verona</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Traslado a Verona. Tarde para explorar la Arena, la Casa de Julieta, Piazza delle Erbe y el histórico Ponte Pietra.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 6: Florencia</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Viaje a Florencia. Visita a la Galería de la Academia para ver el David de Miguel Ángel y paseo por el icónico Ponte Vecchio.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 7: Florencia Cultural</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Subida a la Cúpula de Brunelleschi para vistas panorámicas. Paseo por la Piazza della Signoria y tarde en los Jardines de Boboli.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 8: La Spezia & Cinque Terre</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Traslado a La Spezia. Inicio de la exploración de Cinque Terre en tren local, visitando Riomaggiore y Manarola.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 9: Cinque Terre</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Continuación de la visita a Cinque Terre: Corniglia, el único pueblo en lo alto, Vernazza con su castillo y Monterosso al Mare.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 10: Día de Playa</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Día libre para disfrutar de las playas de Cinque Terre. Cena de despedida en La Spezia.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 11: Alessandria</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Viaje a Alessandria en la región del Piamonte. Exploración de su centro histórico, la Piazza della Libertà y la Cittadella.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 12: Turín</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Traslado a Turín. Visita a la Mole Antonelliana (Museo del Cine) y paseo por la majestuosa Piazza Castello.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 13: Pavía</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Viaje a Pavía. Visita a su antigua Universidad, el Duomo y el Ponte Coperto sobre el río Ticino.</p></div></div>
-                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 14: Regreso</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Visita a la Certosa di Pavia, un magnífico complejo monástico. Traslado al aeropuerto de Milán para el vuelo de regreso.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 1: Milán</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip de experiencia: Tras admirar el Duomo, no te pierdas el aperitivo en los Navigli, los canales de Milán. Al atardecer, la zona cobra vida con bares y restaurantes que ofrecen un buffet libre con tu bebida.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 2: Brescia</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip arquitectónico: Visita el Monasterio de Santa Giulia, hoy Museo de la Ciudad. Es un increíble viaje a través de la historia, con restos romanos y basílicas lombardas bajo un mismo techo.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 3: Lago di Garda</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip de experiencia: En Sirmione, después de visitar el castillo, busca las "terme" públicas en la orilla del lago. Podrás sentir el agua sulfurosa caliente brotando de las rocas.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 4: Franciacorta</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip gastronómico: Elige una "cantina" familiar en lugar de una grande. La experiencia será más íntima y podrás charlar con los productores sobre su pasión por el vino espumoso método clásico.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 5: Verona</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip de experiencia: Sube a la Torre dei Lamberti al atardecer. Ofrece una vista panorámica de 360 grados de Verona, y ver cómo se tiñen de rojo los tejados de la ciudad es inolvidable.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 6: Florencia</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip gastronómico: Cruza el Ponte Vecchio y piérdete en el barrio de Oltrarno. Aquí encontrarás "trattorias" auténticas y menos turísticas. Pide una "pappa al pomodoro" o "ribollita".</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 7: Florencia Cultural</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip de experiencia: En los Jardines de Boboli, busca la Grotta del Buontalenti. Es una cueva artificial fascinante que mezcla arquitectura, escultura y pintura de una manera única y teatral.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 8: La Spezia & Cinque Terre</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip de experiencia: Al llegar a Manarola, sube por el sendero hacia el cementerio. Desde allí obtendrás la vista de postal más famosa del pueblo, especialmente mágica durante la "hora dorada".</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 9: Cinque Terre</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip gastronómico: En Vernazza, busca un local que venda "fritto misto" en un cono de papel. Disfrutar de pescado y marisco fresco frito mientras paseas por el puerto es un placer sencillo y delicioso.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 10: Día de Playa</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip de experiencia: En Monterosso, alquila una hamaca y una sombrilla en la playa de Fegina. Es la única de Cinque Terre con arena extensa y es perfecta para un día de relax al más puro estilo italiano.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 11: Alessandria</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip arquitectónico: No te dejes engañar por su exterior austero, la Cittadella es una de las fortificaciones militares más grandes e impresionantes de Europa. Pasear por sus bastiones es como retroceder en el tiempo.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 12: Turín</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip gastronómico: Turín es la cuna del chocolate y el vermut. Visita un café histórico como Al Bicerin para probar la bebida homónima (café, chocolate y crema) y no te vayas sin probar el "Gianduiotto".</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 13: Pavía</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip arquitectónico: El Ponte Coperto tiene una pequeña capilla en el centro. La leyenda dice que debes tocar la pared para tener buena suerte. Es un lugar encantador para contemplar el río Ticino.</p></div></div>
+                                    <div class="accordion-item"><div class="accordion-header"><strong>Día 14: Regreso</strong><span class="accordion-icon text-2xl font-thin text-gray-500">+</span></div><div class="accordion-content"><p>Tip de despedida: La fachada de la Certosa di Pavia es una obra maestra del Renacimiento. Dedica tiempo a admirar los intrincados detalles en mármol antes de entrar. Es el broche de oro perfecto para tu viaje por el norte.</p></div></div>
                                 </div>
                             </div>
                             <div class="md:col-span-1">
@@ -447,7 +255,7 @@
                                         </ul>
                                     </div>
                                     <div class="mt-6">
-                                        <a href="#contacto" class="w-full text-center inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Solicitar más información</a>
+                                        <a href="#contacto" data-itinerary-file="itinerario-norte-italia.pdf" class="contact-trip-btn w-full text-center inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">Solicitar más información</a>
                                     </div>
                                 </div>
                             </div>
@@ -469,7 +277,7 @@
                             <div id="city-info-card" class="hidden opacity-0 transform -translate-y-4 max-w-3xl mx-auto">
                             </div>
                              <div class="text-center mt-10">
-                                <a href="#contacto" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">¡Comienza a diseñar tu viaje!</a>
+                                <a href="#contacto" id="design-trip-btn" class="inline-block px-8 py-3 rounded-lg font-bold btn-secondary transition-transform transform hover:scale-105">¡Comienza a diseñar tu viaje!</a>
                              </div>
                         </div>
                     </div>
@@ -483,7 +291,7 @@
                              <div id="download-confirmation" class="hidden mb-4 text-green-700 font-semibold">
                                 <p>✓ ¡Descarga iniciada!</p>
                              </div>
-                             <a href="itinerario-sur-italia.pdf" download="Itinerario-Sur-Italia.pdf" id="download-link" class="inline-flex items-center justify-center w-full max-w-md mx-auto px-6 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
+                             <a href="#" download id="download-link" class="inline-flex items-center justify-center w-full max-w-md mx-auto px-6 py-3 rounded-lg font-bold btn-download transition-transform transform hover:scale-105">
                                 <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                                 <span id="download-text">Descargar Itinerario Completo</span>
                             </a>
@@ -517,9 +325,9 @@
     </main>
 
     <!-- Pie de Página Simplificado -->
-    <footer id="page-footer" class="bg-gray-800 text-white">
+    <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-4 text-center text-gray-400">
-            <p>&copy; 2025 Fliarneodo. Un viaje inolvidable te espera.</p>
+            <p>© 2025 Fliarneodo. Un viaje inolvidable te espera.</p>
         </div>
     </footer>
 
@@ -530,7 +338,7 @@
         </svg>
     </button>
     
-    <!-- ===== NUEVO MODAL DE VIDEO ===== -->
+    <!-- Modal de Video -->
     <div id="video-modal" class="video-modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4 hidden opacity-0">
         <div class="video-modal-content bg-black rounded-lg shadow-2xl w-full max-w-3xl relative opacity-0 transform scale-95">
             <button id="close-video-modal-btn" class="absolute -top-3 -right-3 z-10 bg-white rounded-full p-1 text-gray-800 hover:bg-gray-200">
@@ -542,10 +350,10 @@
         </div>
     </div>
 
-
     <!-- Scripts de la página -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- DATOS Y ELEMENTOS DEL DOM ---
             const cityData = {
                 roma: { title: "Roma, la Ciudad Eterna", image: "3-fontana-di-trevi.jpeg", description: "<strong>Encantos:</strong> Explora el Coliseo, el Foro Romano y la majestuosidad del Vaticano. Lanza una moneda en la Fontana di Trevi para asegurar tu regreso.<br><strong>Sabores:</strong> Deléitate con una auténtica carbonara, una cacio e pepe o una pizza al taglio. No te vayas sin probar un suppli, la croqueta de arroz romana." },
                 venosa: { title: "Venosa, Cuna de Horacio", image: "4-venosa.jpeg", description: "<strong>Encantos:</strong> Un tesoro escondido en Basilicata. Descubre su castillo aragonés, el parque arqueológico romano y la Abadía de la Trinidad.<br><strong>Sabores:</strong> Prueba el Aglianico del Vulture, uno de los mejores vinos tintos de Italia, acompañado de pasta casera con ragú de cordero." },
@@ -556,64 +364,59 @@
                 pisa: { title: "Pisa y su Torre Inclinada", image: "8-pisa.jpeg", description: "<strong>Encantos:</strong> Más allá de la icónica torre, la Piazza dei Miracoli alberga el Duomo y el Baptisterio, obras maestras del románico pisano.<br><strong>Sabores:</strong> Disfruta de la cecina, una especie de crepe salado de harina de garbanzos, o de los platos de pescado fresco cerca del río Arno." },
                 lago_di_como: { title: "Lago di Como, Lujo y Naturaleza", image: "9-lago-di-como.jpeg", description: "<strong>Encantos:</strong> Un paisaje alpino de ensueño con aguas azules y villas elegantes. Pasea por pueblos pintorescos como Bellagio, Varenna y Menaggio.<br><strong>Sabores:</strong> Prueba el risotto con pesce persico (perca del lago) y los quesos locales de las montañas cercanas." }
             };
-            
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const destinationsContainer = document.getElementById('destinations-container');
             const cityInfoCard = document.getElementById('city-info-card');
             const downloadContainer = document.getElementById('download-container');
-            const contactOptions = document.getElementById('contact-options');
-            const consultarGrupalBtn = document.getElementById('consultar-grupal-btn');
-            const navLinksToContact = document.querySelectorAll('a[href="#contacto"]:not(#consultar-grupal-btn)');
             const downloadLink = document.getElementById('download-link');
             const downloadText = document.getElementById('download-text');
             const downloadConfirmation = document.getElementById('download-confirmation');
 
-            mobileMenuButton.addEventListener('click', function() { mobileMenu.classList.toggle('hidden'); });
-            document.querySelectorAll('#mobile-menu a').forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
-            
-            if (consultarGrupalBtn) { 
-                consultarGrupalBtn.addEventListener('click', (e) => { 
-                    e.preventDefault(); 
-                    if (downloadContainer) { 
-                        downloadContainer.classList.remove('hidden'); 
-                    }
-                    if (contactOptions) {
-                        contactOptions.classList.remove('hidden');
-                    }
-                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' }); 
-                }); 
-            }
-            
-            navLinksToContact.forEach(link => { 
-                link.addEventListener('click', (e) => { 
-                    e.preventDefault(); 
-                    if (downloadContainer) { 
-                        downloadContainer.classList.add('hidden'); 
-                    }
-                    if (contactOptions) {
-                        contactOptions.classList.remove('hidden');
-                    }
-                    document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' }); 
-                }); 
-            });
+            // --- MENÚ MÓVIL ---
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            document.querySelectorAll('#mobile-menu a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-            if (downloadLink) {
+            // --- LÓGICA DE LA SECCIÓN DE CONTACTO (DESCARGA) ---
+            function setupContactSection() {
+                document.querySelectorAll('.contact-trip-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const itineraryFile = e.target.dataset.itineraryFile;
+                        downloadLink.href = itineraryFile;
+                        downloadLink.setAttribute('download', itineraryFile.split('/').pop());
+                        downloadContainer.classList.remove('hidden');
+                        document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
+                    });
+                });
+                
+                document.querySelectorAll('a[href="#contacto"]:not(.contact-trip-btn)').forEach(link => {
+                    link.addEventListener('click', e => {
+                        e.preventDefault();
+                        downloadContainer.classList.add('hidden');
+                        document.querySelector('#contacto').scrollIntoView({ behavior: 'smooth' });
+                    });
+                });
+
                 downloadLink.addEventListener('click', () => {
                     if (!downloadLink.classList.contains('downloaded')) {
-                        if (downloadConfirmation) {
-                            downloadConfirmation.classList.remove('hidden');
-                        }
-                        if (downloadText) {
-                            downloadText.textContent = 'Descargar nuevamente';
-                        }
+                        downloadConfirmation.classList.remove('hidden');
+                        downloadText.textContent = 'Descargar nuevamente';
                         downloadLink.classList.add('downloaded');
+                        setTimeout(() => {
+                           downloadConfirmation.classList.add('hidden');
+                           downloadLink.classList.remove('downloaded');
+                           downloadText.textContent = 'Descargar Itinerario Completo';
+                        }, 4000);
                     }
                 });
             }
-
-            const cityKeys = ['roma', 'venosa', 'sorrento', 'florencia', 'milan', 'capri', 'pisa', 'lago_di_como'];
-            if (destinationsContainer) {
+            
+            // --- VIAJES A MEDIDA (CÍRCULOS DE CIUDADES) ---
+            function setupCustomTrips() {
+                const cityKeys = ['roma', 'venosa', 'sorrento', 'florencia', 'milan', 'capri', 'pisa', 'lago_di_como'];
+                if (!destinationsContainer) return;
+                
                 cityKeys.forEach(key => {
                     const city = cityData[key];
                     const circleContainer = document.createElement('div');
@@ -621,114 +424,148 @@
                     const circle = document.createElement('div');
                     circle.className = 'destination-circle mx-auto';
                     circle.style.backgroundImage = `url('assets/${city.image}')`;
-                    circle.dataset.city = key;
+                    circleContainer.appendChild(circle);
                     const name = document.createElement('p');
                     name.className = 'mt-2 font-semibold';
-                    name.textContent = city.title.split(',')[0]; 
-                    circleContainer.appendChild(circle);
+                    name.textContent = city.title.split(',')[0];
                     circleContainer.appendChild(name);
                     destinationsContainer.appendChild(circleContainer);
+                    
                     circle.addEventListener('click', () => {
-                        destinationsContainer.querySelectorAll('.destination-circle').forEach(c => c.classList.remove('active'));
+                        document.querySelectorAll('.destination-circle').forEach(c => c.classList.remove('active'));
                         circle.classList.add('active');
-                        cityInfoCard.innerHTML = `<div class="bg-gray-200 p-6 rounded-lg shadow-inner flex flex-col md:flex-row gap-6 items-center relative"><button id="close-card-btn" class="absolute top-2 right-2 text-3xl text-gray-500 hover:text-black leading-none">&times;</button><img src="assets/${city.image}" class="w-full md:w-1/3 h-48 object-cover rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/000000?text=Imagen+no+disponible';"><div class="md:w-2/3"><h4 class="text-2xl font-bold mb-3 text-gray-800">${city.title}</h4><p class="text-sm md:text-base text-gray-700 leading-relaxed">${city.description}</p></div></div>`;
+                        cityInfoCard.innerHTML = `<div class="bg-gray-200 p-6 rounded-lg shadow-inner flex flex-col md:flex-row gap-6 items-center relative"><button id="close-card-btn" class="absolute top-2 right-2 text-3xl text-gray-500 hover:text-black leading-none">×</button><img src="assets/${city.image}" class="w-full md:w-1/3 h-48 object-cover rounded-md"><div class="md:w-2/3"><h4 class="text-2xl font-bold mb-3 text-gray-800">${city.title}</h4><p class="text-sm md:text-base text-gray-700 leading-relaxed">${city.description}</p></div></div>`;
                         cityInfoCard.classList.remove('hidden', 'opacity-0', '-translate-y-4');
-                        
-                        setTimeout(() => {
-                            const headerOffset = 110; 
-                            const elementPosition = cityInfoCard.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                          
-                            window.scrollTo({
-                                 top: offsetPosition,
-                                 behavior: "smooth"
-                            });
-                        }, 100); 
-
+                        setTimeout(() => cityInfoCard.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
                         document.getElementById('close-card-btn').addEventListener('click', () => {
                             cityInfoCard.classList.add('opacity-0', '-translate-y-4');
                             setTimeout(() => cityInfoCard.classList.add('hidden'), 500);
-                            destinationsContainer.querySelectorAll('.destination-circle').forEach(c => c.classList.remove('active'));
+                            circle.classList.remove('active');
                         });
                     });
                 });
             }
 
-            // ===== SCRIPT DEL MODAL DE VIDEO ACTUALIZADO =====
-            const videoModal = document.getElementById('video-modal');
-            const playVideoBtn = document.getElementById('play-video-btn');
-            const closeVideoModalBtn = document.getElementById('close-video-modal-btn');
-            const videoPlayer = document.getElementById('youtube-video-player');
-            const videoSrc = "https://www.youtube.com/embed/fW0quHQQAuI";
+            // --- LÓGICA DE SALIDAS GRUPALES (TARJETAS Y ACORDEÓN) ---
+            function setupGroupTrips() {
+                const tripButtons = document.querySelectorAll('.show-trip-btn');
+                const tripDetailsSections = document.querySelectorAll('.trip-details');
 
-            function openModal() {
-                videoPlayer.src = videoSrc + "?autoplay=1"; // Add autoplay
-                videoModal.classList.remove('hidden');
-                setTimeout(() => {
-                    videoModal.classList.remove('opacity-0');
-                    videoModal.querySelector('.video-modal-content').classList.remove('opacity-0', 'scale-95');
-                }, 10);
-            }
+                // Función para inicializar los acordeones de un contenedor específico
+                const initAccordions = (container) => {
+                    const accordionItems = container.querySelectorAll('.accordion-item');
+                    accordionItems.forEach(item => {
+                        const header = item.querySelector('.accordion-header');
+                        // Remover listeners antiguos para evitar duplicados
+                        const newHeader = header.cloneNode(true);
+                        header.parentNode.replaceChild(newHeader, header);
+                        
+                        newHeader.addEventListener('click', () => {
+                            const content = item.querySelector('.accordion-content');
+                            const isActive = item.classList.contains('active');
+                            
+                            // Cerrar todos los demás items en este contenedor
+                            container.querySelectorAll('.accordion-item').forEach(otherItem => {
+                                otherItem.classList.remove('active');
+                                otherItem.querySelector('.accordion-content').style.maxHeight = 0;
+                            });
 
-            function closeModal() {
-                videoModal.classList.add('opacity-0');
-                videoModal.querySelector('.video-modal-content').classList.add('opacity-0', 'scale-95');
-                setTimeout(() => {
-                    videoModal.classList.add('hidden');
-                    videoPlayer.src = ""; // Stop video by clearing src
-                }, 300);
-            }
+                            // Abrir el item clickeado si no estaba activo
+                            if (!isActive) {
+                                item.classList.add('active');
+                                content.style.maxHeight = content.scrollHeight + "px";
+                            }
+                        });
+                    });
+                };
 
-            if(playVideoBtn) playVideoBtn.addEventListener('click', openModal);
-            if(closeVideoModalBtn) closeVideoModalBtn.addEventListener('click', closeModal);
-            if(videoModal) videoModal.addEventListener('click', function(event) {
-                if (event.target === videoModal) {
-                    closeModal();
-                }
-            });
-        });
-    </script>
+                tripButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const tripId = button.dataset.trip;
+                        const targetDetails = document.getElementById(`trip-details-${tripId}`);
 
-    <!-- Scripts de Animaciones, Botón Volver Arriba y Acordeón -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-in-section').forEach(section => { sectionObserver.observe(section); });
-
-            const backToTopBtn = document.getElementById('back-to-top-btn');
-            const footer = document.getElementById('page-footer');
-            const footerObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) { backToTopBtn.classList.add('show'); } 
-                    else { backToTopBtn.classList.remove('show'); }
+                        if (targetDetails.classList.contains('visible')) {
+                            // Si ya está visible, lo oculta
+                             targetDetails.classList.remove('visible');
+                        } else {
+                            // Oculta todos los detalles primero
+                            tripDetailsSections.forEach(section => section.classList.remove('visible'));
+                            // Muestra el detalle del viaje seleccionado
+                            targetDetails.classList.add('visible');
+                            // Inicializa sus acordeones
+                            initAccordions(targetDetails);
+                            // Desplaza la vista hacia el detalle
+                            setTimeout(() => targetDetails.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+                        }
+                    });
                 });
-            }, { threshold: 0.1 });
-            if (footer) { footerObserver.observe(footer); }
-            if (backToTopBtn) { backToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }); }
+            }
+            
+            // --- MODAL DE VIDEO ---
+            function setupVideoModal() {
+                const videoModal = document.getElementById('video-modal');
+                const playVideoBtn = document.getElementById('play-video-btn');
+                const closeVideoModalBtn = document.getElementById('close-video-modal-btn');
+                const videoPlayer = document.getElementById('youtube-video-player');
+                const videoSrc = "https://www.youtube.com/embed/fW0quHQQAuI";
 
-            const accordionItems = document.querySelectorAll('.accordion-item');
-            accordionItems.forEach(item => {
-                const header = item.querySelector('.accordion-header');
-                header.addEventListener('click', () => {
-                    const currentlyActive = document.querySelector('.accordion-item.active');
-                    if (currentlyActive && currentlyActive !== item) {
-                        currentlyActive.classList.remove('active');
-                        currentlyActive.querySelector('.accordion-content').style.maxHeight = 0;
-                    }
+                const openModal = () => {
+                    videoPlayer.src = videoSrc + "?autoplay=1&rel=0";
+                    videoModal.classList.remove('hidden');
+                    setTimeout(() => {
+                        videoModal.classList.remove('opacity-0');
+                        videoModal.querySelector('.video-modal-content').classList.remove('opacity-0', 'scale-95');
+                    }, 10);
+                };
 
-                    item.classList.toggle('active');
-                    const content = item.querySelector('.accordion-content');
-                    if (item.classList.contains('active')) {
-                        content.style.maxHeight = content.scrollHeight + "px";
+                const closeModal = () => {
+                    videoModal.classList.add('opacity-0');
+                    videoModal.querySelector('.video-modal-content').classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => {
+                        videoModal.classList.add('hidden');
+                        videoPlayer.src = "";
+                    }, 300);
+                };
+
+                if(playVideoBtn) playVideoBtn.addEventListener('click', openModal);
+                if(closeVideoModalBtn) closeVideoModalBtn.addEventListener('click', closeModal);
+                if(videoModal) videoModal.addEventListener('click', e => { if (e.target === videoModal) closeModal(); });
+            }
+
+            // --- ANIMACIONES Y BOTÓN "VOLVER ARRIBA" ---
+            function setupScrollAnimations() {
+                const fadeInSections = document.querySelectorAll('.fade-in-section');
+                const backToTopBtn = document.getElementById('back-to-top-btn');
+                
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                fadeInSections.forEach(section => observer.observe(section));
+
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 400) {
+                        backToTopBtn.classList.add('show');
                     } else {
-                        content.style.maxHeight = 0;
+                        backToTopBtn.classList.remove('show');
                     }
                 });
-            });
+                
+                if (backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            }
+
+            // --- INICIALIZACIÓN DE TODAS LAS FUNCIONES ---
+            setupGroupTrips();
+            setupCustomTrips();
+            setupContactSection();
+            setupVideoModal();
+            setupScrollAnimations();
         });
     </script>
 
 </body>
-</ht
+</html>
